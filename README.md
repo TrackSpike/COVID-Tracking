@@ -10,3 +10,6 @@ Algorithm                  - ???
 
 -iOS will be difficult to get text/call data
 -Start looking into Dart and flutter 
+
+# The Product Vision
+- We are looking forword to create an application that will track the COVID-19 cases easier and simple for the users.
