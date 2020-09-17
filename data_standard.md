@@ -10,11 +10,13 @@ Our COVID-19 Tracking app deals with data from an ever expanding pool of data so
 ## Field List
 ### Required
 * Source - The source that the entry came from.
+* Time - The time that the interaction took place, in unix timestamp.
 * Person - The other person, **not** the user who installed the app.
 * Type - The type of entry data, this could be Instagram DM, Follower ect. See below for keyword list. The weight of the communication will be pulled from a separate JSON file.
 
 ### Optional
 These will changed based on the source.
+The idea behind these optional fields is to provide information is needed but it is not guaranteed to be there.
 
 ## Example
 ~~~
@@ -22,6 +24,7 @@ These will changed based on the source.
 	"source": "Instagram",
 	"person": "John",
 	"type": "Instagram DM",
+    "time": 1699923,
 	"message": "Hello World"
 }
 ~~~
