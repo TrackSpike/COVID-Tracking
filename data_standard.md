@@ -20,11 +20,36 @@ The idea behind these optional fields is to provide information is needed but it
 
 ## Example
 ~~~
-{
-	"source": "Instagram",
-	"person": "John",
-	"type": "Instagram DM",
-    	"time": 1699923,
-	"message": "Hello World"
-}
+"data": [
+   {
+      "source":"instagram",
+      "time":"2020-09-10T18:32:31+00:00",
+      "person":"user3",
+      "type":"instagram_dm"
+   },
+   {
+      "source":"instagram",
+      "time":"2020-09-10T13:34:08+00:00",
+      "person":"user",
+      "type":"instagram_dm"
+   },
+   {
+      "source":"instagram",
+      "time":"2020-09-10T02:11:12+00:00",
+      "person":"user 5",
+      "type":"instagram_dm"
+   },
+   {
+      "source":"instagram",
+      "time":"2020-09-09T21:17:15+00:00",
+      "person":"user8",
+      "type":"instagram_dm"
+   },
+   {
+      "source":"instagram",
+      "time":"2020-09-09T19:27:53+00:00",
+      "person":"user7",
+      "type":"instagram_dm"
+   }
+]
 ~~~

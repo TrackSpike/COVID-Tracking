@@ -19,3 +19,7 @@
 - Talked mostly about the data format.
 - Creating python program to convert downloaded data to our format.
 - Spent some time exploring downloaded instagram data.
+
+# Meeting Notes 9/17
+- Identified next steps for the project.
+- Dr. Akbas says the most important part of the algorithm is being able to find these distinct groups of friends. 
