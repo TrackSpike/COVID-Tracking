@@ -4,6 +4,7 @@ from random import randint
 
 # THE FILE 'firstnames_lastnames.csv' MUST BE IN THE SAME FOLDER AS THIS PROGRAM
 # THIS PROGRAM OUTPUTS THE FILE 'custom.json' IN THE SAME FOLDER AT THIS PROGRAM
+# TO RUN THIS FILE SIMPLY RUN IT, NO ARGUEMENTS ARE NEEDED
 
 def generateEntry(name, time):
     dmTemplate = {
