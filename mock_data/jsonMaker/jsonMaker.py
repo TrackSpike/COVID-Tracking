@@ -2,6 +2,8 @@ import json
 import csv
 from random import randint
 
+# THE FILE 'firstnames_lastnames.csv' MUST BE IN THE SAME FOLDER AS THIS PROGRAM
+# THIS PROGRAM OUTPUTS THE FILE 'custom.json' IN THE SAME FOLDER AT THIS PROGRAM
 
 def generateEntry(name, time):
     dmTemplate = {
@@ -30,7 +32,10 @@ dates = ['2020-09-10T18:32:31+00:00',
 
 data = {"data": []}
 
-for i in range(100):
+# CHANGE THIS VARIABLE TO ALTER THE NUMBER OF ENTRIES MADE
+numEntries = 100
+
+for i in range(numEntries):
     curName = names[randint(0, 49)]
     curTime = dates[randint(0, 4)]
     data["data"].append(generateEntry(curName, curTime))
