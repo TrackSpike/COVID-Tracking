@@ -23,3 +23,6 @@
 # Meeting Notes 9/17
 - Identified next steps for the project.
 - Dr. Akbas says the most important part of the algorithm is being able to find these distinct groups of friends. 
+
+# Meeting Notes 9/22
+- https://networks.skewed.de/net/ego_social
