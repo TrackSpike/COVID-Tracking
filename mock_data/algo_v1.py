@@ -19,9 +19,9 @@ def calculate(dict):
     results = {}
     for entry in dict:
         try:
-            time = dt.datetime.strptime(entry['time'],'%Y-%m-%dT%H:%M:%S.%f%z')
+            time = dt.datetime.strptime(entry['time'],'%Y-%m-%dT%H:%M:%S.%f')
         except ValueError:
-            time = dt.datetime.strptime(entry['time'],'%Y-%m-%dT%H:%M:%S%z')
+            time = dt.datetime.strptime(entry['time'],'%Y-%m-%dT%H:%M:%S')
         dif = (dt.datetime.now() - time.replace(tzinfo=None)).days
         try:
             weight = weights[entry['type']]
