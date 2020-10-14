@@ -18,9 +18,9 @@ def calculate(dict):
     results = {}
     for entry in dict:
         try:
-            time = dt.datetime.strptime(entry['time'],'%Y-%m-%dT%H:%M:%S.%f%z')
+            time = dt.datetime.strptime(entry['time'],'%Y-%m-%dT%H:%M:%S.%f')
         except ValueError:
-            time = dt.datetime.strptime(entry['time'],'%Y-%m-%dT%H:%M:%S%z')
+            time = dt.datetime.strptime(entry['time'],'%Y-%m-%dT%H:%M:%S')
         now = dt.datetime.strptime('2020-09-11', '%Y-%m-%d')
         dif = (now - time.replace(tzinfo=None)).days
         try:
@@ -42,9 +42,9 @@ def calculate_v1(dict):
     results = {}
     for entry in dict:
         try:
-            time = dt.datetime.strptime(entry['time'],'%Y-%m-%dT%H:%M:%S.%f%z')
+            time = dt.datetime.strptime(entry['time'],'%Y-%m-%dT%H:%M:%S.%f')
         except ValueError:
-            time = dt.datetime.strptime(entry['time'],'%Y-%m-%dT%H:%M:%S%z')
+            time = dt.datetime.strptime(entry['time'],'%Y-%m-%dT%H:%M:%S')
         now = dt.datetime.strptime('2020-09-11', '%Y-%m-%d')
         dif = (now - time.replace(tzinfo=None)).days
         try:
