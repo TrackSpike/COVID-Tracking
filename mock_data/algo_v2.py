@@ -1,3 +1,4 @@
+from os import write
 import matplotlib.pyplot as plt
 import math
 import sys
@@ -11,6 +12,7 @@ def main():
     with open(filePath) as f:
         json_data = json.load(f)
     result = calculate(json_data)
+    write_file(result)
     plot_both(calculate(json_data),calculate_v1(json_data), True)
 
 def calculate(dict):
@@ -59,7 +61,7 @@ def write_file(data):
     time_str = time.strftime('%H_%M_%S', time.localtime())
     ego_filename = f'algo_v1_gen_{time_str}.json'
     with open(ego_filename , 'w+') as f:
-        json.dump(calculate(data), f)
+        json.dump(data, f)
 
 def plot_data(data, log=False):
     data = data[1:]

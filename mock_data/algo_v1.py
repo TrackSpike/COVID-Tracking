@@ -12,6 +12,7 @@ def main():
     result = calculate(json_data)
     plot_data(result)
     plot_data(result, True)
+    write_file(result)
 
 def calculate(dict):
     time_weight = 0.01
@@ -35,7 +36,7 @@ def write_file(data):
     time_str = time.strftime('%H_%M_%S', time.localtime())
     ego_filename = f'algo_v1_gen_{time_str}.json'
     with open(ego_filename , 'w+') as f:
-        json.dump(calculate(data), f)
+        json.dump(data, f)
 
 def plot_data(data, log=False):
     data = data[1:]
