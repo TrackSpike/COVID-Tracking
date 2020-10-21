@@ -5,9 +5,13 @@ import 'package:flutter/services.dart' show rootBundle;
 final timeWeight = 0.01;
 
 Future<Map<String, double>> calculate(List<Map<String, dynamic>> dict) async {
+
   String weightString = await rootBundle.loadString('assets/algo_weights.json');
+
   Map<String, dynamic> weights = json.decode(weightString);
+
   Map<String, double> results = {};
+
   dict.forEach((entry) {
     DateTime time = DateTime.parse(entry['time']);
     int dif = DateTime.now().difference(time).inDays; //todo int to double
@@ -16,5 +20,6 @@ Future<Map<String, double>> calculate(List<Map<String, dynamic>> dict) async {
         (weight - timeWeight * dif * weight).clamp(0, double.infinity);
     results[entry['person']] = (results['person'] ?? 0) + value;
   });
+
   return results;
 }
