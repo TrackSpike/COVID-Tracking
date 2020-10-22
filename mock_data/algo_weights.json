@@ -1,7 +1,7 @@
 {
     "instagram_like": 0.1,
     "instagram_group_message": 0.01,
-    "instagram_direct_message": 1,
+    "instagram_direct_message": 1.0,
     "snapchat_got_image": 0.05,
     "snapchat_got_video": 0.08,
     "snapchat_got_other": 0.05,
