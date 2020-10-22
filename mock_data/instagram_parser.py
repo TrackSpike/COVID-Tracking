@@ -31,7 +31,7 @@ def main():
 def parse_likes():
     new_data = {'data':[]}
     filename = sys.argv[1] + 'likes.json'
-    with open(filename) as f:
+    with open(filename, encoding="utf8") as f:
         json_data = json.load(f)
         for like in json_data['media_likes']:
             d = {}
@@ -45,7 +45,7 @@ def parse_likes():
 def parse_messages():
     new_data = {'data':[]}
     filename = sys.argv[1] + 'messages.json'
-    with open(filename) as f:
+    with open(filename, encoding="utf8") as f:
         json_data = json.load(f)
         for chat in json_data:
             for message in chat['conversation']:

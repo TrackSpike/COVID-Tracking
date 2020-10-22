@@ -31,7 +31,7 @@ def main():
 def parse_snaps():
     new_data = {'data':[]}
     filename = sys.argv[1] + '/json/snap_history.json'
-    with open(filename) as f:
+    with open(filename, encoding="utf") as f:
         json_data = json.load(f)
         for snap in json_data['Received Snap History']:
             d = {}

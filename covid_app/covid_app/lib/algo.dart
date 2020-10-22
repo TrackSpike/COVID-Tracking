@@ -20,5 +20,6 @@ Future<Map<String, double>> calculate(List<UniversalEntry> data) async {
         (weight - timeWeight * dif * weight).clamp(0.0, double.infinity);
     results[entry.person] = (results[entry.person] ?? 0) + value;
   });
+
   return results;
 }
