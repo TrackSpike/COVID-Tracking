@@ -21,7 +21,24 @@ Future<List<AlgoResult>> calculate(List<UniversalEntry> data) async {
         (weight - timeWeight * dif * weight).clamp(0.0, double.infinity);
     results[entry.person] = (results[entry.person] ?? 0) + value;
   });
+  results.removeWhere((key, value) => value == 0);
   List<AlgoResult> resultTyped = [];
   results.forEach((key, value) => resultTyped.add(AlgoResult(key, value, 0)));
+  resultTyped.sort((a, b) => b.score.compareTo(a.score));
+  calculateLevels(resultTyped);
   return resultTyped;
+}
+
+void calculateLevels(List<AlgoResult> results) {
+  //This is not the best way to do it, it is just a placeholder.
+  for (int i = 0; i < results.length; i++) {
+    if (i / results.length < 0.05)
+      results[i].level = 1;
+    else if (i / results.length < 0.15)
+      results[i].level = 2;
+    else if (i / results.length < 0.35)
+      results[i].level = 3;
+    else
+      results[i].level = 4;
+  }
 }
