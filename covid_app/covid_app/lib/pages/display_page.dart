@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:convert';
+import 'package:covid_app/algo_result.dart';
 import 'package:covid_app/universal_entry.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_app/algo.dart';
@@ -40,7 +41,7 @@ class _DisplayPageState extends State<DisplayPage> {
     List<UniversalEntry> entries = (json.decode(text) as List<dynamic>)
         .map((e) => UniversalEntry.fromJson(e))
         .toList();
-    var result = await calculate(entries);
+    List<AlgoResult> result = await calculate(entries);
     print(result.length);
   }
 }
