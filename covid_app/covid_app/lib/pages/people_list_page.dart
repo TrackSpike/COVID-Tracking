@@ -5,14 +5,23 @@ class PeopleListPage extends StatelessWidget {
   final List<AlgoResult> people;
   final String title;
   final Color accentColor;
+  final Color textColor;
 
-  PeopleListPage(this.people, this.title, this.accentColor);
+  PeopleListPage(this.people, this.title, this.accentColor, this.textColor);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        iconTheme: IconThemeData(
+          color: textColor,
+        ),
+        brightness: (textColor==Colors.white) ? Brightness.dark: Brightness.light,
+        title: Text(
+            title,
+            style:
+            TextStyle(color: textColor)
+        ),
         backgroundColor: accentColor,
       ),
       body: Center(

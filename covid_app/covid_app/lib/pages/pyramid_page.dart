@@ -3,7 +3,7 @@ import 'package:covid_app/pages/people_list_page.dart';
 import 'package:flutter/material.dart';
 
 class PyramidPage extends StatelessWidget {
-  List<AlgoResult> res;
+  final List<AlgoResult> res;
   final List<String> layerNames = [
     "Serious Friends",
     "Good Friends",
@@ -18,6 +18,13 @@ class PyramidPage extends StatelessWidget {
     Colors.yellowAccent
   ];
 
+  final List<Color> layerTextColors = [
+    Colors.white,
+    Colors.white,
+    Colors.white,
+    Colors.black
+  ];
+
   PyramidPage({this.res});
 
   void pyramidClick(BuildContext context, int layer) {
@@ -26,7 +33,7 @@ class PyramidPage extends StatelessWidget {
         context,
         MaterialPageRoute(
           builder: (context) =>
-              PeopleListPage(sliced, layerNames[layer], layerColors[layer]),
+              PeopleListPage(sliced, layerNames[layer], layerColors[layer], layerTextColors[layer]),
         ));
   }
 
