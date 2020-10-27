@@ -33,12 +33,12 @@ void calculateLevels(List<AlgoResult> results) {
   //This is not the best way to do it, it is just a placeholder.
   for (int i = 0; i < results.length; i++) {
     if (i / results.length < 0.05)
-      results[i].level = 1;
+      results[i].level = 0;
     else if (i / results.length < 0.15)
-      results[i].level = 2;
+      results[i].level = 1;
     else if (i / results.length < 0.35)
-      results[i].level = 3;
+      results[i].level = 2;
     else
-      results[i].level = 4;
+      results[i].level = 3;
   }
 }
