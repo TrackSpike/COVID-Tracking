@@ -1,9 +1,11 @@
 import 'dart:io';
 import 'dart:convert';
 import 'package:covid_app/algo_result.dart';
+import 'package:covid_app/pages/pyramid_page.dart';
 import 'package:covid_app/universal_entry.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_app/algo.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 
 class DisplayPage extends StatefulWidget {
@@ -42,6 +44,9 @@ class _DisplayPageState extends State<DisplayPage> {
         .map((e) => UniversalEntry.fromJson(e))
         .toList();
     List<AlgoResult> result = await calculate(entries);
-    print(result.length);
+    Navigator.push(context, MaterialPageRoute<void>(
+      builder: (BuildContext context) => PyramidPage(res:result),
+      fullscreenDialog: true,
+    ));
   }
 }
