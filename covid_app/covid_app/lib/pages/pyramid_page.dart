@@ -35,7 +35,11 @@ class PyramidPage extends StatelessWidget {
               child:
                 Text(
                     "Click on a level in your pyramid to see more info",
-                    textAlign: TextAlign.center
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: "Roboto",
+                      fontWeight: FontWeight.bold
+                    )
                 ),
             ),
             new Container(
@@ -47,12 +51,16 @@ class PyramidPage extends StatelessWidget {
                   textColor: Colors.white,
                   disabledColor: Colors.grey,
                   disabledTextColor: Colors.black,
-                  splashColor: Colors.blueAccent,
+                  splashColor: Colors.redAccent,
                   onPressed: () {
                     /*...*/
                   },
                   child: Text(
-                      numbers[0].toString()
+                      numbers[0].toString()+" Serious Friends",
+                    style: TextStyle(
+                      fontFamily: "Roboto",
+                      fontWeight: FontWeight.bold
+                    )
                   ),
                 ),
             ),
@@ -70,7 +78,11 @@ class PyramidPage extends StatelessWidget {
                     /*...*/
                   },
                   child: Text(
-                      numbers[1].toString()
+                      numbers[1].toString()+" Good Friends",
+                    style: TextStyle(
+                      fontFamily: "Roboto",
+                      fontWeight: FontWeight.bold
+                    )
                   ),
                 ),
             ),
@@ -88,7 +100,11 @@ class PyramidPage extends StatelessWidget {
                     /*...*/
                   },
                   child: Text(
-                      numbers[2].toString()
+                      numbers[2].toString()+" Friends",
+                    style: TextStyle(
+                      fontFamily: "Roboto",
+                      fontWeight: FontWeight.bold
+                    )
                   ),
                 ),
             ),
@@ -106,7 +122,11 @@ class PyramidPage extends StatelessWidget {
                   /*...*/
                 },
                 child: Text(
-                  numbers[3].toString()
+                  numbers[3].toString()+" Distant Friends",
+                  style: TextStyle(
+                      fontFamily: "Roboto",
+                      fontWeight: FontWeight.bold
+                    )
                 ),
               ),
             )
