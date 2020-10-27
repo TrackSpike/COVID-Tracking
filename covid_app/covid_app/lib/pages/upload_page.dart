@@ -22,14 +22,16 @@ class _UploadPageState extends State<UploadPage> {
       body: Center(
         child: Column(
           children: [
-            RaisedButton(
-                child: Text("Load Social data"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => FilePickerScreen()),
-                  );
-                })
+            OutlineButton(
+            onPressed: () {
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => FilePickerScreen()),
+              );
+            },
+            child: Text('Load Social Data'),
+            )
+
           ],
           mainAxisAlignment: MainAxisAlignment.center,
         ),
