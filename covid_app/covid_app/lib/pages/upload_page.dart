@@ -23,15 +23,14 @@ class _UploadPageState extends State<UploadPage> {
         child: Column(
           children: [
             OutlineButton(
-            onPressed: () {
+              onPressed: () {
                 Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => FilePickerScreen()),
-              );
-            },
-            child: Text('Load Social Data'),
+                  context,
+                  MaterialPageRoute(builder: (context) => FilePickerScreen()),
+                );
+              },
+              child: Text('Load Social Data'),
             )
-
           ],
           mainAxisAlignment: MainAxisAlignment.center,
         ),
@@ -77,13 +76,13 @@ class FilePickerScreen extends StatelessWidget {
         type: FileType.custom,
         allowedExtensions: ['json'],
       );
-      writeFile(result);
+      writeFile(context, result);
     } on PlatformException catch (e) {
       print("Unsupported operation" + e.toString());
     }
   }
 
-  void writeFile(result) async {
+  void writeFile(context, result) async {
     //Yes I know how dumb this is, its to make the future easier
     PlatformFile file = result.files.first;
     String raw = await rootBundle.loadString(file.path);
@@ -91,51 +90,25 @@ class FilePickerScreen extends StatelessWidget {
     Directory directory = await getApplicationDocumentsDirectory();
     File fileNew = File('${directory.path}/lastUploadedData.json');
     await fileNew.writeAsString(raw);
-  }
-
-  //Jonah's test code
-  void displayNamesOld(context, result) async {
-    if (result != null) {
-      PlatformFile file = result.files.first;
-
-      String message_raw = await rootBundle.loadString(file.path);
-
-      message_data_final = json.decode(message_raw);
-
-      List<Widget> people = new List<Widget>();
-
-      List people_all = new List();
-
-      for (var i = 0; i < message_data_final.length; i++) {
-        people_all.add(message_data_final[i]["person"]);
-      }
-
-      List people_unique = new List();
-
-      for (var i = 0; i < people_all.length; i++) {
-        if (!people_unique.contains(people_all[i])) {
-          people_unique.add(people_all[i]);
-        }
-      }
-
-      for (var i = 0; i < people_unique.length; i++) {
-        people.add(new SizedBox(
-          height: 30,
-          child: new Card(child: new Text(people_unique[i])),
-        ));
-      }
-
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => DisplayInstagramStats(message_data: people),
-          ));
-    }
+    showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+              title: Text("Success!"),
+              content: Text('The data was loaded successfully.'),
+              actions: <Widget>[
+                TextButton(
+                  child: Text('Nice!'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            ));
   }
 }
 
 class DisplayInstagramStats extends StatelessWidget {
-  List<Widget> message_data;
+  final List<Widget> message_data;
 
   DisplayInstagramStats({Key key, @required this.message_data})
       : super(key: key);
