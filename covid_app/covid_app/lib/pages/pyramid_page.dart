@@ -39,8 +39,6 @@ class PyramidPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint(res[0].level.toString());
-
     List numbers = [0, 0, 0, 0];
 
     for (AlgoResult score in res) {

@@ -105,7 +105,7 @@ class FilePickerScreen extends StatelessWidget {
                   },
                 ),
               ],
-            ));
+        ));
   }
 }
 
