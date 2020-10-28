@@ -58,7 +58,7 @@ class PyramidPage extends StatelessWidget {
             new Container(
               margin: const EdgeInsets.only(bottom: 20),
               width: 200,
-              child: Text("Click on a level in your pyramid to see more info",
+              child: Text("Click on a level in your pyramid to see more",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontFamily: "Roboto", fontWeight: FontWeight.bold)),
