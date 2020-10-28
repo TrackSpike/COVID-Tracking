@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:covid_app/pages/display_page.dart';
+import 'package:covid_app/pages/home_page.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -99,7 +101,7 @@ class FilePickerScreen extends StatelessWidget {
                 TextButton(
                   child: Text('Nice!'),
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    Navigator.pushNamedAndRemoveUntil(context, '/', (_) => false);
                   },
                 ),
               ],

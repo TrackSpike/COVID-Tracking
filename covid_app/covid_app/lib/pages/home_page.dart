@@ -4,13 +4,15 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:covid_app/pages/display_page.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key key}) : super(key: key);
+  final int changedTab;
+  HomePage({Key key, this.changedTab}) : super(key: key);
 
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  int changedTab;
   // controls the pages
   PageController _pageController = PageController();
   // the different screens of the navigation bar
@@ -25,6 +27,13 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void changeTab(int index) {
+    setState(() {
+      _selectedIndex = index;
+      _pageController.jumpToPage(index);
+    });
+  }
+
   // when an item on the bottom nav bar is tapped
   void _onItemTapped(int selectedIndex) {
     _pageController.jumpToPage(selectedIndex);
@@ -32,6 +41,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    if(changedTab!=null) {
+      changeTab(changedTab);
+    }
     return Scaffold(
       body: PageView(
         controller: _pageController,
