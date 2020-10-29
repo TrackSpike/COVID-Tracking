@@ -45,6 +45,11 @@ class PyramidPage extends StatelessWidget {
       numbers[score.level] += 1;
     }
 
+    String levelZeroFirstName = res.where((e) => e.level == 0).first.name;
+    String levelOneFirstName = res.where((e) => e.level == 1).first.name;
+    String levelTwoFirstName = res.where((e) => e.level == 2).first.name;
+    String levelThreeFirstName = res.where((e) => e.level == 3).first.name;
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Your Ego Network"),
@@ -61,13 +66,13 @@ class PyramidPage extends StatelessWidget {
                   style: TextStyle(
                       fontFamily: "Roboto", fontWeight: FontWeight.bold)),
             ),
-            PyramidLayer(0, layerNames[0], numbers[0], 100, layerColors[0],
+            PyramidLayer(0, layerNames[0], levelZeroFirstName, numbers[0], 150, layerColors[0],
                 pyramidClick),
-            PyramidLayer(1, layerNames[1], numbers[1], 200, layerColors[1],
+            PyramidLayer(1, layerNames[1], levelOneFirstName, numbers[1], 250, layerColors[1],
                 pyramidClick),
-            PyramidLayer(2, layerNames[2], numbers[2], 250, layerColors[2],
+            PyramidLayer(2, layerNames[2], levelTwoFirstName, numbers[2], 300, layerColors[2],
                 pyramidClick),
-            PyramidLayer(3, layerNames[3], numbers[3], 300, layerColors[3],
+            PyramidLayer(3, layerNames[3], levelThreeFirstName, numbers[3], 350, layerColors[3],
                 pyramidClick),
           ],
         ),
@@ -79,12 +84,13 @@ class PyramidPage extends StatelessWidget {
 class PyramidLayer extends StatelessWidget {
   final int level;
   final String title;
+  final String friendName;
   final int number;
   final double width;
   final Color accentColor;
   final Function onClick;
 
-  PyramidLayer(this.level, this.title, this.number, this.width,
+  PyramidLayer(this.level, this.title, this.friendName, this.number, this.width,
       this.accentColor, this.onClick);
 
   @override
@@ -99,9 +105,14 @@ class PyramidLayer extends StatelessWidget {
         disabledColor: Colors.grey,
         disabledTextColor: Colors.black,
         onPressed: () => onClick(context, this.level),
-        child: Text(number.toString() + " " + title,
-            style:
+        child: Column(
+          children: [
+            Text(number.toString() + " " + title,
+              style:
                 TextStyle(fontFamily: "Roboto", fontWeight: FontWeight.bold)),
+            Text(friendName+" and others", style: TextStyle(fontSize: 12),)
+          ],
+        ),
       ),
     );
   }
