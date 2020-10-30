@@ -31,7 +31,7 @@ class _UploadPageState extends State<UploadPage> {
                   MaterialPageRoute(builder: (context) => FilePickerScreen()),
                 );
               },
-              child: Text('Load Social Data'),
+              child: Text("Load Social Data"),
             )
           ],
           mainAxisAlignment: MainAxisAlignment.center,
@@ -42,11 +42,6 @@ class _UploadPageState extends State<UploadPage> {
 }
 
 class FilePickerScreen extends StatelessWidget {
-  String path;
-  Map<String, String> paths;
-  String extension;
-  List message_data_final;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,9 +54,9 @@ class FilePickerScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('Upload your messaging data'),
+            Text("Upload your messaging data"),
             RaisedButton(
-              child: Text('Open File Picker'),
+              child: Text("Open File Picker"),
               onPressed: () {
                 openFilePicker(context);
               },
@@ -76,7 +71,7 @@ class FilePickerScreen extends StatelessWidget {
     try {
       FilePickerResult result = await FilePicker.platform.pickFiles(
         type: FileType.custom,
-        allowedExtensions: ['json'],
+        allowedExtensions: ["json"],
       );
       writeFile(context, result);
     } on PlatformException catch (e) {
@@ -90,42 +85,22 @@ class FilePickerScreen extends StatelessWidget {
     String raw = await rootBundle.loadString(file.path);
     //This is where we will parse the data
     Directory directory = await getApplicationDocumentsDirectory();
-    File fileNew = File('${directory.path}/lastUploadedData.json');
+    File fileNew = File("${directory.path}/lastUploadedData.json");
     await fileNew.writeAsString(raw);
     showDialog(
         context: context,
         builder: (_) => AlertDialog(
               title: Text("Success!"),
-              content: Text('The data was loaded successfully.'),
+              content: Text("The data was loaded successfully."),
               actions: <Widget>[
                 TextButton(
-                  child: Text('Nice!'),
+                  child: Text("Nice!"),
                   onPressed: () {
-                    Navigator.pushNamedAndRemoveUntil(context, '/', (_) => false);
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/', (_) => false);
                   },
                 ),
               ],
-        ));
-  }
-}
-
-class DisplayInstagramStats extends StatelessWidget {
-  final List<Widget> message_data;
-
-  DisplayInstagramStats({Key key, @required this.message_data})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Social Data"),
-      ),
-      body: Center(
-          child: ListView(
-              shrinkWrap: true,
-              padding: EdgeInsets.all(15.0),
-              children: message_data)),
-    );
+            ));
   }
 }
