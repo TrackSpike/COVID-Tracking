@@ -1,16 +1,13 @@
 import 'dart:async' show Future;
-import 'dart:convert';
+import 'dart:io';
 import 'package:covid_app/algo_result.dart';
 import 'package:covid_app/universal_entry.dart';
-import 'package:flutter/services.dart' show rootBundle;
+import 'weights_handler.dart';
 
 final timeWeight = 0.01;
 
 Future<List<AlgoResult>> calculate(List<UniversalEntry> data) async {
-  String weightString = await rootBundle.loadString('assets/algo_weights.json');
-  Map<String, double> weights =
-      (json.decode(weightString) as Map<String, dynamic>)
-          .map((key, value) => MapEntry(key, value.toDouble()));
+  Map<String, double> weights = await getWeights();
   Map<String, double> results = {};
   data.forEach((entry) {
     DateTime time = entry.time;

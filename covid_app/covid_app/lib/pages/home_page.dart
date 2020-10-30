@@ -1,4 +1,5 @@
 import 'package:covid_app/pages/upload_page.dart';
+import 'package:covid_app/pages/weights_page.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:covid_app/pages/display_page.dart';
@@ -16,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   // controls the pages
   PageController _pageController = PageController();
   // the different screens of the navigation bar
-  List<Widget> _screens = [DisplayPage(), UploadPage()];
+  List<Widget> _screens = [DisplayPage(), UploadPage(), WeightsPage()];
   // the index of the currently selected screen on the navigation bar
   int _selectedIndex = 0;
 
@@ -41,7 +42,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    if(changedTab!=null) {
+    if (changedTab != null) {
       changeTab(changedTab);
     }
     return Scaffold(
@@ -53,7 +54,8 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         //currentIndex: _selectedIndex,
-        onTap: _onItemTapped,//(int index) => setState(() => _selectedIndex = index),
+        onTap:
+            _onItemTapped, //(int index) => setState(() => _selectedIndex = index),
         items: [
           // HOME PAGE
           BottomNavigationBarItem(
@@ -78,6 +80,19 @@ class _HomePageState extends State<HomePage> {
               "Upload Data",
               style: TextStyle(
                 color: _selectedIndex == 1 ? Colors.blue : Colors.grey,
+              ),
+            ),
+          ),
+          // Weights page
+          BottomNavigationBarItem(
+            icon: Icon(
+              MdiIcons.accountCog,
+              color: _selectedIndex == 2 ? Colors.blue : Colors.grey,
+            ),
+            title: Text(
+              "Weights",
+              style: TextStyle(
+                color: _selectedIndex == 2 ? Colors.blue : Colors.grey,
               ),
             ),
           ),
