@@ -37,33 +37,36 @@ class _DisplayPageState extends State<DisplayPage> {
   }
 
   void calculateEgoNetwork() async {
-    Directory directory = await getApplicationDocumentsDirectory();
-    File file = File('${directory.path}/lastUploadedData.json');
-    String text = await file.readAsString();
     try {
+      Directory directory = await getApplicationDocumentsDirectory();
+      File file = File('${directory.path}/lastUploadedData.json');
+      String text = await file.readAsString();
       List<UniversalEntry> entries = (json.decode(text) as List<dynamic>)
           .map((e) => UniversalEntry.fromJson(e))
           .toList();
       List<AlgoResult> result = await calculate(entries);
-      Navigator.push(context, MaterialPageRoute<void>(
-        builder: (BuildContext context) => PyramidPage(res:result),
-        fullscreenDialog: true,
-      ));
-    } catch(e) {
+      Navigator.push(
+          context,
+          MaterialPageRoute<void>(
+            builder: (BuildContext context) => PyramidPage(res: result),
+            fullscreenDialog: true,
+          ));
+    } catch (e) {
       showDialog(
           context: context,
           builder: (_) => AlertDialog(
-            title: Text("Error"),
-            content: Text('Your Ego network could not be calculated from the data loaded.'),
-            actions: <Widget>[
-              TextButton(
-                child: Text('Ok'),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          ));
+                title: Text("Error"),
+                content: Text(
+                    "Your Ego network could not be calculated. Try uploading new data."),
+                actions: <Widget>[
+                  TextButton(
+                    child: Text("Ok"),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ],
+              ));
     }
   }
 }

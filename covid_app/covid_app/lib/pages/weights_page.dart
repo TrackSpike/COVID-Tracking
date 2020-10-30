@@ -1,12 +1,11 @@
-import 'dart:convert';
-import 'dart:io';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:path_provider/path_provider.dart';
 import '../weights_handler.dart';
 
 class WeightsPage extends StatelessWidget {
-  Widget build(BuildContext build) {
+  Widget build(BuildContext context) {
+    final WeightsList weightsList = WeightsList();
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(
@@ -17,18 +16,20 @@ class WeightsPage extends StatelessWidget {
         ),
       ),
       body: Center(
-        child: WeightsList(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            RaisedButton(
+                child: Text("Reset Defaults"),
+                onPressed: () {
+                  resetWeights();
+                  Navigator.pushNamedAndRemoveUntil(context, '/', (_) => false);
+                }),
+            Expanded(child: weightsList),
+          ],
+        ),
       ),
     );
-  }
-
-  //Not quite done yet
-  void resetDefaults() async {
-    String weightString =
-        await rootBundle.loadString('assets/algo_weights.json');
-    Directory directory = await getApplicationDocumentsDirectory();
-    File file = File('${directory.path}/custom_weights.json');
-    file.writeAsString(weightString);
   }
 }
 
@@ -117,7 +118,7 @@ class _PersonDisplayWidgetState extends State<PersonDisplayWidget> {
     final selectedFontSize = await showDialog<double>(
         context: context,
         builder: (BuildContext context) => ValuePickerDialog(
-              initalValue: 1,
+              initalValue: widget.weight.value,
             ));
     setState(() {
       widget.weight.value = selectedFontSize;
@@ -177,8 +178,6 @@ class _ValuePickerDialogState extends State<ValuePickerDialog> {
       actions: <Widget>[
         FlatButton(
           onPressed: () {
-            // Use the second argument of Navigator.pop(...) to pass
-            // back a result to the page that opened the dialog
             Navigator.pop(context, _value);
           },
           child: Text("Save"),
