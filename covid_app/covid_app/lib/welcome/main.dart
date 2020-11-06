@@ -1,11 +1,12 @@
-import 'package:corvidTracker/HomePage.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+import 'HomePage.dart';
 
-class MyApp extends StatelessWidget {
+// void main() {
+//   runApp(MyApp());
+// }
+
+class MyAppSultan extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
-       
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: HomePage(), // Main Screen of Covid-19 Tracker
