@@ -31,13 +31,15 @@ class _HomePageState extends State<HomePage> {
   void changeTab(int index) {
     setState(() {
       _selectedIndex = index;
-      _pageController.jumpToPage(index);
+      _pageController.animateToPage(index,
+          duration: Duration(milliseconds: 350), curve: Curves.easeIn);
     });
   }
 
   // when an item on the bottom nav bar is tapped
   void _onItemTapped(int selectedIndex) {
-    _pageController.jumpToPage(selectedIndex);
+    _pageController.animateToPage(selectedIndex,
+        duration: Duration(milliseconds: 350), curve: Curves.easeIn);
   }
 
   @override
