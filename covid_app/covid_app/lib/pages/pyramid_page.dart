@@ -32,8 +32,8 @@ class PyramidPage extends StatelessWidget {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) =>
-              PeopleListPage(sliced, layerNames[layer], layerColors[layer], layerTextColors[layer]),
+          builder: (context) => PeopleListPage(sliced, layerNames[layer],
+              layerColors[layer], layerTextColors[layer]),
         ));
   }
 
@@ -50,11 +50,8 @@ class PyramidPage extends StatelessWidget {
     String levelTwoFirstName = res.where((e) => e.level == 2).first.name;
     String levelThreeFirstName = res.where((e) => e.level == 3).first.name;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Your Ego Network"),
-      ),
-      body: Center(
+    return Expanded(
+      child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -66,14 +63,14 @@ class PyramidPage extends StatelessWidget {
                   style: TextStyle(
                       fontFamily: "Roboto", fontWeight: FontWeight.bold)),
             ),
-            PyramidLayer(0, layerNames[0], levelZeroFirstName, numbers[0], 150, layerColors[0],
-                pyramidClick),
-            PyramidLayer(1, layerNames[1], levelOneFirstName, numbers[1], 250, layerColors[1],
-                pyramidClick),
-            PyramidLayer(2, layerNames[2], levelTwoFirstName, numbers[2], 300, layerColors[2],
-                pyramidClick),
-            PyramidLayer(3, layerNames[3], levelThreeFirstName, numbers[3], 350, layerColors[3],
-                pyramidClick),
+            PyramidLayer(0, layerNames[0], levelZeroFirstName, numbers[0], 150,
+                layerColors[0], pyramidClick),
+            PyramidLayer(1, layerNames[1], levelOneFirstName, numbers[1], 250,
+                layerColors[1], pyramidClick),
+            PyramidLayer(2, layerNames[2], levelTwoFirstName, numbers[2], 300,
+                layerColors[2], pyramidClick),
+            PyramidLayer(3, layerNames[3], levelThreeFirstName, numbers[3], 350,
+                layerColors[3], pyramidClick),
           ],
         ),
       ),
@@ -108,9 +105,12 @@ class PyramidLayer extends StatelessWidget {
         child: Column(
           children: [
             Text(number.toString() + " " + title,
-              style:
-                TextStyle(fontFamily: "Roboto", fontWeight: FontWeight.bold)),
-            Text(friendName+" and others", style: TextStyle(fontSize: 12),)
+                style: TextStyle(
+                    fontFamily: "Roboto", fontWeight: FontWeight.bold)),
+            Text(
+              friendName + " and others",
+              style: TextStyle(fontSize: 12),
+            )
           ],
         ),
       ),
