@@ -89,7 +89,6 @@ class FilePickerScreen extends StatelessWidget {
     PlatformFile file = result.files.first;
     globals.uploadedFileName = result.files.first.name;
     String raw = await rootBundle.loadString(file.path);
-    print(raw);
     //This is where we will parse the data
     Directory directory = await getApplicationDocumentsDirectory();
     File fileNew = File("${directory.path}/lastUploadedData.json");
