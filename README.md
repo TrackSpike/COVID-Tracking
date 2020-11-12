@@ -8,7 +8,7 @@
 - [How It Works](#how-it-works)
 - [How To Install](#how-to-install)
 - [How To Download Your Data](#how-to-download-your-data)
-- [Author Info(#author-info)
+- [Author Info](#author-info)
 
 ## The Product Vision
 
