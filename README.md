@@ -14,7 +14,7 @@
 
 To allow user's to create ego networks of their friends and use the ego network to aid in tracking COVID-19 cases and spread.
 
-[Back to the Top](#COVID19-Tracking)
+[Back to the Top](#COVID-19-Tracking)
 
 ---
 
@@ -28,7 +28,7 @@ description
 - Flutter
 - Python
 
-[Back to the Top](#COVID19-Tracking)
+[Back to the Top](#COVID-19-Tracking)
 
 ---
 
@@ -36,7 +36,7 @@ description
 
 how it works and how to use it with example images/screenshots
 
-[Back to the Top](#COVID19-Tracking)
+[Back to the Top](#COVID-19-Tracking)
 
 ---
 
@@ -44,7 +44,7 @@ how it works and how to use it with example images/screenshots
 
 how to install the app
 
-[Back to the Top](#COVID19-Tracking)
+[Back to the Top](#COVID-19-Tracking)
 
 ---
 
@@ -52,7 +52,7 @@ how to install the app
 
 how to download your snapchat and instagram data with links
 
-[Back to the Top](#COVID19-Tracking)
+[Back to the Top](#COVID-19-Tracking)
 
 ---
 
@@ -60,4 +60,4 @@ how to download your snapchat and instagram data with links
 
 list team members with their github and/or linkedin links if they want
 
-[Back to the Top](#COVID19-Tracking)
+[Back to the Top](#COVID-19-Tracking)
