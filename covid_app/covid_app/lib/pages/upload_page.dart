@@ -20,8 +20,12 @@ class UploadPage extends StatefulWidget {
 class _UploadPageState extends State<UploadPage> {
   @override
   Widget build(BuildContext context) {
-    String dataSource = (globals.uploadedFileName!=null) ? globals.uploadedFileName : "No data source";
-    String uploadButton = (globals.uploadedFileName!=null) ? "Overwrite Social Data" : "Load Social Data";
+    String dataSource = (globals.uploadedFileName != null)
+        ? globals.uploadedFileName
+        : "No data source";
+    String uploadButton = (globals.uploadedFileName != null)
+        ? "Overwrite Social Data"
+        : "Load Social Data";
     return Scaffold(
       appBar: AppBar(
         title: Text("Upload Your Data"),
@@ -29,13 +33,10 @@ class _UploadPageState extends State<UploadPage> {
       body: Center(
         child: Column(
           children: [
-            Text("Data Source: "+ dataSource),
+            Text("Data Source: " + dataSource),
             OutlineButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => FilePickerScreen()),
-                );
+                openFilePicker(context);
               },
               child: Text(uploadButton),
             )
@@ -43,33 +44,6 @@ class _UploadPageState extends State<UploadPage> {
           mainAxisAlignment: MainAxisAlignment.center,
         ),
       ),
-    );
-  }
-}
-
-class FilePickerScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Social Data"),
-      ),
-      body: Center(
-          child: Padding(
-        padding: const EdgeInsets.only(top: 50.0, bottom: 20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text("Upload your messaging data"),
-            RaisedButton(
-              child: Text("Open File Picker"),
-              onPressed: () {
-                openFilePicker(context);
-              },
-            )
-          ],
-        ),
-      )),
     );
   }
 
@@ -84,7 +58,6 @@ class FilePickerScreen extends StatelessWidget {
       print("Unsupported operation" + e.toString());
     }
   }
-
 
   void writeFile(context, result) async {
     //Yes I know how dumb this is, its to make the future easier
