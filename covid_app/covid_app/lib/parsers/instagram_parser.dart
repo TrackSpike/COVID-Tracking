@@ -13,7 +13,7 @@ class InstagramParser extends Parser {
 
   Future<List<UniversalEntry>> _parseMessages() async {
     List<UniversalEntry> result = [];
-    String filename = path + "messages.json";
+    String filename = path + "/messages.json";
     String raw = await rootBundle.loadString(filename);
     List<Map<String, dynamic>> jsonResult = json.decode(raw);
     for (Map<String, dynamic> chat in jsonResult) {

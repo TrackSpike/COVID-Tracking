@@ -7,6 +7,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:covid_app/parsers/instagram_parser.dart';
 import 'package:covid_app/globals.dart' as globals;
 
 class UploadPage extends StatefulWidget {
@@ -74,15 +75,16 @@ class FilePickerScreen extends StatelessWidget {
 
   void openFilePicker(context) async {
     try {
-      FilePickerResult result = await FilePicker.platform.pickFiles(
-        type: FileType.custom,
-        allowedExtensions: ["json"],
-      );
-      writeFile(context, result);
+      String result = await FilePicker.platform.getDirectoryPath();
+      InstagramParser parser = InstagramParser(result);
+      Future<List> res = parser.format();
+      //TODO: Append to lastUploadedData.json
+      //writeFile(context, result);
     } on PlatformException catch (e) {
       print("Unsupported operation" + e.toString());
     }
   }
+
 
   void writeFile(context, result) async {
     //Yes I know how dumb this is, its to make the future easier
