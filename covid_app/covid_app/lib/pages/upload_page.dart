@@ -1,11 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:covid_app/pages/display_page.dart';
-import 'package:covid_app/pages/home_page.dart';
 import 'package:covid_app/parsers/parser.dart';
 import 'package:covid_app/parsers/snapchat_parser.dart';
 import 'package:covid_app/universal_entry.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -34,28 +31,33 @@ class _UploadPageState extends State<UploadPage> {
         title: Text("Upload Your Data"),
       ),
       body: Center(
-        child: Column(
-          children: [
-            Text("Data Source: " + dataSource),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                OutlineButton(
-                  onPressed: () {
-                    openFilePicker(context, InstagramParser());
-                  },
-                  child: Text("Upload Instagram"),
-                ),
-                OutlineButton(
-                  onPressed: () {
-                    openFilePicker(context, SnapchatParser());
-                  },
-                  child: Text("Upload Snapchat"),
-                ),
-              ],
-            )
-          ],
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text("Data Sources", style: TextStyle(fontSize: 20)),
+              DataSourceList(),
+              Text("Data Source: " + dataSource),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  OutlineButton(
+                    onPressed: () {
+                      openFilePicker(context, InstagramParser());
+                    },
+                    child: Text("Upload Instagram"),
+                  ),
+                  OutlineButton(
+                    onPressed: () {
+                      openFilePicker(context, SnapchatParser());
+                    },
+                    child: Text("Upload Snapchat"),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -76,14 +78,22 @@ class _UploadPageState extends State<UploadPage> {
     List<UniversalEntry> newEntries = await parser.format(pathResult);
     Directory directory = await getApplicationDocumentsDirectory();
     File dataFile = File("${directory.path}/lastUploadedData.json");
+    if (!await dataFile.exists()) {
+      dataFile = await dataFile.create();
+      List<Map<String, dynamic>> empty = [];
+      dataFile.writeAsString(json.encode(empty));
+    }
     List<UniversalEntry> entries =
         (json.decode(await dataFile.readAsString()) as List<dynamic>)
             .map((e) => UniversalEntry.fromJson(e))
             .toList();
     entries.addAll(newEntries);
+    //Big performance bottleneck
+    //--------------------------------------------------------------------------
     List<Map<String, dynamic>> entriesJson =
         entries.map((e) => e.toJson()).toList();
     await dataFile.writeAsString(json.encode(entriesJson));
+    //--------------------------------------------------------------------------
     showDialog(
         context: context,
         builder: (_) => AlertDialog(
@@ -99,5 +109,65 @@ class _UploadPageState extends State<UploadPage> {
                 ),
               ],
             ));
+  }
+}
+
+class DataSourceList extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: Colors.blue,
+      child: FutureBuilder<List<String>>(
+        future: getUniqueSources(),
+        builder: (context, AsyncSnapshot<List<String>> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Container(
+                height: 200, child: Center(child: Text("Loading...")));
+          } else {
+            return Container(
+              height: 200,
+              padding: EdgeInsets.all(15),
+              child: ListView.builder(
+                  physics: ClampingScrollPhysics(),
+                  itemCount: snapshot.data.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return DataSourceListEntry(snapshot.data[index]);
+                  }),
+            );
+          }
+        },
+      ),
+    );
+  }
+
+  Future<List<String>> getUniqueSources() async {
+    Directory directory = await getApplicationDocumentsDirectory();
+    File dataFile = File("${directory.path}/lastUploadedData.json");
+    List<UniversalEntry> entries =
+        (json.decode(await dataFile.readAsString()) as List<dynamic>)
+            .map((e) => UniversalEntry.fromJson(e))
+            .toList();
+    return entries.map((e) => e.source).toSet().toList();
+  }
+}
+
+class DataSourceListEntry extends StatelessWidget {
+  final String dataSource;
+  DataSourceListEntry(this.dataSource);
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(dataSource),
+          IconButton(
+            icon: Icon(Icons.delete),
+            color: Colors.red,
+            onPressed: () => {},
+          )
+        ],
+      ),
+    );
   }
 }

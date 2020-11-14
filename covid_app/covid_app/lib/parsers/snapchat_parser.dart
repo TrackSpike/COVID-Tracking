@@ -44,6 +44,7 @@ class SnapchatParser extends Parser {
   }
 
   DateTime formatTime(String time) {
+    time = time.replaceAll(RegExp(" [A-Za-z]+"), "");
     return DateTime.parse(time);
   }
 }
