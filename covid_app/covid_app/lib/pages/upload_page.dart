@@ -64,7 +64,8 @@ class _UploadPageState extends State<UploadPage> {
   void openFilePicker(context, Parser parser) async {
     try {
       String pathResult = await FilePicker.platform.getDirectoryPath();
-      appendEntries(context, pathResult, parser);
+      if (pathResult != null) //Null path is just canceled operation
+        appendEntries(context, pathResult, parser);
     } on PlatformException catch (e) {
       print("Unsupported operation" + e.toString());
     }
