@@ -1,20 +1,22 @@
 import 'package:covid_app/parsers/parser.dart';
+import 'dart:io';
 import 'dart:convert';
 import 'package:covid_app/universal_entry.dart';
 import 'package:flutter/services.dart';
 
 class SnapchatParser extends Parser {
-  SnapchatParser(String path) : super(path);
+  @override
+  final String name = "Snapchat";
 
   @override
-  Future<List<UniversalEntry>> format() async {
-    return await _parseSnaps();
+  Future<List<UniversalEntry>> format(String path) async {
+    return await _parseSnaps(path);
   }
 
-  Future<List<UniversalEntry>> _parseSnaps() async {
+  Future<List<UniversalEntry>> _parseSnaps(String path) async {
     List<UniversalEntry> result = [];
     String filename = path + "/json/snap_history.json";
-    String raw = await rootBundle.loadString(filename);
+    String raw = await File(filename).readAsString();
     Map<String, dynamic> jsonResult = json.decode(raw);
     for (Map<String, dynamic> snap in jsonResult["Received Snap History"]) {
       result.add(UniversalEntry(

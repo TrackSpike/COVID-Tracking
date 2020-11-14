@@ -2,6 +2,9 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:covid_app/pages/display_page.dart';
 import 'package:covid_app/pages/home_page.dart';
+import 'package:covid_app/parsers/parser.dart';
+import 'package:covid_app/parsers/snapchat_parser.dart';
+import 'package:covid_app/universal_entry.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:file_picker/file_picker.dart';
@@ -34,11 +37,22 @@ class _UploadPageState extends State<UploadPage> {
         child: Column(
           children: [
             Text("Data Source: " + dataSource),
-            OutlineButton(
-              onPressed: () {
-                openFilePicker(context);
-              },
-              child: Text(uploadButton),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                OutlineButton(
+                  onPressed: () {
+                    openFilePicker(context, InstagramParser());
+                  },
+                  child: Text("Upload Instagram"),
+                ),
+                OutlineButton(
+                  onPressed: () {
+                    openFilePicker(context, SnapchatParser());
+                  },
+                  child: Text("Upload Snapchat"),
+                ),
+              ],
             )
           ],
           mainAxisAlignment: MainAxisAlignment.center,
@@ -47,32 +61,33 @@ class _UploadPageState extends State<UploadPage> {
     );
   }
 
-  void openFilePicker(context) async {
+  void openFilePicker(context, Parser parser) async {
     try {
-      String result = await FilePicker.platform.getDirectoryPath();
-      InstagramParser parser = InstagramParser(result);
-      Future<List> res = parser.format();
-      //TODO: Append to lastUploadedData.json
-      //writeFile(context, result);
+      String pathResult = await FilePicker.platform.getDirectoryPath();
+      appendEntries(context, pathResult, parser);
     } on PlatformException catch (e) {
       print("Unsupported operation" + e.toString());
     }
   }
 
-  void writeFile(context, result) async {
-    //Yes I know how dumb this is, its to make the future easier
-    PlatformFile file = result.files.first;
-    globals.uploadedFileName = result.files.first.name;
-    String raw = await rootBundle.loadString(file.path);
-    //This is where we will parse the data
+  void appendEntries(context, String pathResult, Parser parser) async {
+    globals.uploadedFileName = pathResult;
+    List<UniversalEntry> newEntries = await parser.format(pathResult);
     Directory directory = await getApplicationDocumentsDirectory();
-    File fileNew = File("${directory.path}/lastUploadedData.json");
-    await fileNew.writeAsString(raw);
+    File dataFile = File("${directory.path}/lastUploadedData.json");
+    List<UniversalEntry> entries =
+        (json.decode(await dataFile.readAsString()) as List<dynamic>)
+            .map((e) => UniversalEntry.fromJson(e))
+            .toList();
+    entries.addAll(newEntries);
+    List<Map<String, dynamic>> entriesJson =
+        entries.map((e) => e.toJson()).toList();
+    await dataFile.writeAsString(json.encode(entriesJson));
     showDialog(
         context: context,
         builder: (_) => AlertDialog(
               title: Text("Success!"),
-              content: Text("The data was loaded successfully."),
+              content: Text("The ${parser.name} was added successfully."),
               actions: <Widget>[
                 TextButton(
                   child: Text("Nice!"),
