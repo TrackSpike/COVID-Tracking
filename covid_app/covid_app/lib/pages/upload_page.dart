@@ -129,7 +129,7 @@ class DataSourceList extends StatelessWidget {
               padding: EdgeInsets.all(15),
               child: ListView.builder(
                   physics: ClampingScrollPhysics(),
-                  itemCount: snapshot.data.length,
+                  itemCount: (snapshot.data != null) ? snapshot.data.length : 0,
                   itemBuilder: (BuildContext context, int index) {
                     return DataSourceListEntry(snapshot.data[index]);
                   }),
@@ -143,6 +143,7 @@ class DataSourceList extends StatelessWidget {
   Future<List<String>> getUniqueSources() async {
     Directory directory = await getApplicationDocumentsDirectory();
     File dataFile = File("${directory.path}/lastUploadedData.json");
+    if (!await dataFile.exists()) return [];
     List<UniversalEntry> entries =
         (json.decode(await dataFile.readAsString()) as List<dynamic>)
             .map((e) => UniversalEntry.fromJson(e))
