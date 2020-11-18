@@ -5,7 +5,6 @@ import 'package:covid_app/pages/pyramid_page.dart';
 import 'package:covid_app/universal_entry.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_app/algo.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 
 class DisplayPage extends StatefulWidget {
@@ -16,6 +15,21 @@ class DisplayPage extends StatefulWidget {
 }
 
 class _DisplayPageState extends State<DisplayPage> {
+  List<AlgoResult> algoData;
+
+  @override
+  void initState() {
+    super.initState();
+    setInitData();
+  }
+
+  void setInitData() async {
+    var r = await getLastResult();
+    setState(() {
+      algoData = r;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,16 +38,35 @@ class _DisplayPageState extends State<DisplayPage> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            FutureBuilder<List<AlgoResult>>(
+              future: getLastResult(),
+              builder: pyramidBuilder,
+            ),
             OutlineButton(
               onPressed: calculateEgoNetwork,
-              child: Text('Calculate'),
-            )
+              child: Text((algoData == null) ? "Calculate" : "Re-Calculate"),
+            ),
           ],
         ),
       ),
     );
+  }
+
+  Widget pyramidBuilder(
+      BuildContext context, AsyncSnapshot<List<AlgoResult>> snapshot) {
+    if (snapshot.connectionState == ConnectionState.waiting) {
+      return Text("Loading");
+    } else if (snapshot.connectionState == ConnectionState.done) {
+      if (snapshot.data != null)
+        return PyramidPage(
+          res: snapshot.data,
+        );
+      else
+        return Text("Hit Calculate to see results.");
+    }
+    return Text("Error");
   }
 
   void calculateEgoNetwork() async {
@@ -45,12 +78,9 @@ class _DisplayPageState extends State<DisplayPage> {
           .map((e) => UniversalEntry.fromJson(e))
           .toList();
       List<AlgoResult> result = await calculate(entries);
-      Navigator.push(
-          context,
-          MaterialPageRoute<void>(
-            builder: (BuildContext context) => PyramidPage(res: result),
-            fullscreenDialog: true,
-          ));
+      setState(() {
+        algoData = result;
+      });
     } catch (e) {
       showDialog(
           context: context,
@@ -59,7 +89,7 @@ class _DisplayPageState extends State<DisplayPage> {
                 content: Text(
                     "Your Ego network could not be calculated. Try uploading new data."),
                 actions: <Widget>[
-                  TextButton(
+                  RaisedButton(
                     child: Text("Ok"),
                     onPressed: () {
                       Navigator.pop(context);

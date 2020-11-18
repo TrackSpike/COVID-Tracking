@@ -1,21 +1,24 @@
 import 'package:covid_app/parsers/parser.dart';
+import 'dart:io';
 import 'dart:convert';
 import 'package:covid_app/universal_entry.dart';
-import 'package:flutter/services.dart';
 
 class InstagramParser extends Parser {
-  InstagramParser(String path) : super(path);
+  @override
+  final String name = "Instagram";
 
   @override
-  Future<List<UniversalEntry>> format() async {
-    return await _parseMessages() + await _parseLikes();
+  Future<List<UniversalEntry>> format(String path) async {
+    return await _parseMessages(path) + await _parseLikes(path);
   }
 
-  Future<List<UniversalEntry>> _parseMessages() async {
+  Future<List<UniversalEntry>> _parseMessages(String path) async {
     List<UniversalEntry> result = [];
-    String filename = path + "messages.json";
-    String raw = await rootBundle.loadString(filename);
-    List<Map<String, dynamic>> jsonResult = json.decode(raw);
+    String filename = path + "/messages.json";
+    String raw = await File(filename).readAsString();
+    List<dynamic> jsonResultA = json.decode(raw);
+    List<Map<String, dynamic>> jsonResult =
+        jsonResultA.map((c) => c as Map<String, dynamic>).toList();
     for (Map<String, dynamic> chat in jsonResult) {
       for (Map<String, dynamic> message in chat["conversation"]) {
         result.add(UniversalEntry(
@@ -30,10 +33,10 @@ class InstagramParser extends Parser {
     return result;
   }
 
-  Future<List<UniversalEntry>> _parseLikes() async {
+  Future<List<UniversalEntry>> _parseLikes(String path) async {
     List<UniversalEntry> result = [];
-    String filename = path + "likes.json";
-    String raw = await rootBundle.loadString(filename);
+    String filename = path + "/likes.json";
+    String raw = await File(filename).readAsString();
     Map<String, dynamic> jsonResult = json.decode(raw);
     for (List<dynamic> like in jsonResult["media_likes"]) {
       result.add(UniversalEntry(
