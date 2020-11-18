@@ -89,7 +89,7 @@ class _DisplayPageState extends State<DisplayPage> {
                 content: Text(
                     "Your Ego network could not be calculated. Try uploading new data."),
                 actions: <Widget>[
-                  TextButton(
+                  RaisedButton(
                     child: Text("Ok"),
                     onPressed: () {
                       Navigator.pop(context);

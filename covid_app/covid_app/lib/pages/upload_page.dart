@@ -100,7 +100,7 @@ class _UploadPageState extends State<UploadPage> {
               title: Text("Success!"),
               content: Text("The ${parser.name} was added successfully."),
               actions: <Widget>[
-                TextButton(
+                RaisedButton(
                   child: Text("Nice!"),
                   onPressed: () {
                     Navigator.pushNamedAndRemoveUntil(

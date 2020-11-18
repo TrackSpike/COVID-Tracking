@@ -96,8 +96,8 @@ class PyramidLayer extends StatelessWidget {
       margin: const EdgeInsets.only(top: 10.0),
       child: FlatButton(
         color: accentColor,
-        height: 50,
-        minWidth: width,
+        //height: 50,
+        //minWidth: width,
         textColor: Colors.black,
         disabledColor: Colors.grey,
         disabledTextColor: Colors.black,
