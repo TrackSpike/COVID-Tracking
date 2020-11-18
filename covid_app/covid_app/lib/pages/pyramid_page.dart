@@ -89,15 +89,15 @@ class PyramidLayer extends StatelessWidget {
 
   PyramidLayer(this.level, this.title, this.friendName, this.number, this.width,
       this.accentColor, this.onClick);
-
+  
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 10.0),
+      height: 50,
+      width: width,
       child: FlatButton(
         color: accentColor,
-        //height: 50,
-        //minWidth: width,
         textColor: Colors.black,
         disabledColor: Colors.grey,
         disabledTextColor: Colors.black,
