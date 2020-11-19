@@ -3,6 +3,7 @@ import 'package:covid_app/pages/weights_page.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:covid_app/pages/display_page.dart';
+import 'package:covid_app/pages/help_page.dart';
 
 class HomePage extends StatefulWidget {
   final int changedTab;
@@ -17,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   // controls the pages
   PageController _pageController = PageController();
   // the different screens of the navigation bar
-  List<Widget> _screens = [DisplayPage(), UploadPage(), WeightsPage()];
+  List<Widget> _screens = [DisplayPage(), UploadPage(), WeightsPage(), HelpPage()];
   // the index of the currently selected screen on the navigation bar
   int _selectedIndex = 0;
 
@@ -55,10 +56,12 @@ class _HomePageState extends State<HomePage> {
         physics: NeverScrollableScrollPhysics(),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         //currentIndex: _selectedIndex,
         onTap:
             _onItemTapped, //(int index) => setState(() => _selectedIndex = index),
         items: [
+
           // HOME PAGE
           BottomNavigationBarItem(
             icon: Icon(
@@ -72,6 +75,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
+
           // UPLOAD DATA PAGE
           BottomNavigationBarItem(
             icon: Icon(
@@ -85,6 +89,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
+
           // Weights page
           BottomNavigationBarItem(
             icon: Icon(
@@ -98,6 +103,21 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
+
+          //HelpPage
+          BottomNavigationBarItem(
+            icon: Icon(
+              MdiIcons.accountQuestion,
+              color: _selectedIndex == 3 ? Colors.blue : Colors.grey,
+            ),
+            title: Text(
+              "Help",
+              style: TextStyle(
+                color: _selectedIndex == 3 ? Colors.blue : Colors.grey,
+              ),
+            )
+          )
+
         ],
       ),
     );
