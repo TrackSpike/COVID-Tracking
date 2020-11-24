@@ -6,7 +6,7 @@
 - [Product Vision](#product-vision)
 - [Description](#description)
 - [How It Works](#how-it-works)
-- [How To Install & Run](#how-to-install-run)
+- [How To Install and Run](#how-to-install-and-run)
 - [How To Download Your Data](#how-to-download-your-data)
 - [Author Info](#author-info)
 
@@ -49,7 +49,7 @@ For more information on each of these steps please see the Help tab inside the a
 
 ---
 
-## How To Install & Run
+## How To Install and Run
 
 how to install the app
 
