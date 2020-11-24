@@ -6,7 +6,7 @@
 - [Product Vision](#product-vision)
 - [Description](#description)
 - [How It Works](#how-it-works)
-- [How To Install & Run](#how-to-install-&-run)
+- [How To Install & Run](#how-to-install-run)
 - [How To Download Your Data](#how-to-download-your-data)
 - [Author Info](#author-info)
 
