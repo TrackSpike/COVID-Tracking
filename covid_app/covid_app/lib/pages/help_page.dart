@@ -1,16 +1,5 @@
-import 'dart:convert';
-import 'dart:io';
-import 'package:covid_app/parsers/parser.dart';
-import 'package:covid_app/parsers/snapchat_parser.dart';
-import 'package:covid_app/universal_entry.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:covid_app/parsers/instagram_parser.dart';
-import 'package:covid_app/globals.dart' as globals;
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-
 import 'help_content_page.dart';
 
 
@@ -34,7 +23,7 @@ class _HelpPageState extends State<HelpPage> {
           Card(
             child: ListTile(
               leading: Icon(MdiIcons.download),
-              title: Text('How to Download Your Data'),
+              title: Text('Downloading Your Data'),
               trailing: Icon(MdiIcons.currencyEth),
               onTap: () {
                 Navigator.push(
@@ -50,7 +39,7 @@ class _HelpPageState extends State<HelpPage> {
           Card(
             child: ListTile(
               leading: Icon(MdiIcons.upload),
-              title: Text('How to Upload Your Data'),
+              title: Text('Uploading Your Data'),
               trailing: Icon(MdiIcons.currencyEth),
               onTap: () {
                 Navigator.push(
@@ -66,13 +55,61 @@ class _HelpPageState extends State<HelpPage> {
           Card(
             child: ListTile(
               leading: Icon(MdiIcons.accountCog),
-              title: Text('Adjusting Your Weights'),
+              title: Text('Adjusting Your Algorithm Weights'),
               trailing: Icon(MdiIcons.currencyEth),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => HelpContentPage(2),
+                  )
+                );
+              },
+            ),
+          ),
+
+          Card(
+            child: ListTile(
+              leading: Icon(MdiIcons.accountGroupOutline),
+              title: Text('Calculating Your Ego Network'),
+              trailing: Icon(MdiIcons.currencyEth),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HelpContentPage(3),
+                  )
+                );
+              },
+            ),
+          ),
+
+          Card(
+            child: ListTile(
+              leading: Icon(MdiIcons.accountDetailsOutline),
+              title: Text('Understanding Your Ego Network'),
+              trailing: Icon(MdiIcons.currencyEth),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HelpContentPage(4),
+                  )
+                );
+              },
+            ),
+          ),
+
+          Card(
+            child: ListTile(
+              leading: Icon(MdiIcons.adjust),
+              title: Text('More Information'),
+              trailing: Icon(MdiIcons.currencyEth),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HelpContentPage(5),
                   )
                 );
               },
