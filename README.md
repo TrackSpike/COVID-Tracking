@@ -36,7 +36,13 @@ This project is a mobile app that calculates how close the user is to each of th
 
 ## How It Works
 
-how it works and how to use it with example images/screenshots
+1. Download your Snapchat and Instagram data.
+2. Unzip the downloaded folder and then upload it to the device the application is installed on.
+3. Link your data to the app using the Upload Data tab inside the app.
+4. If you wish to customize the weights the algorithm will use when calculating your Ego Network, visit the Weights tab in the app. This step is optional.
+5. On the Ego Network tab in the app use the Calculate or Re-Calculate button to find your personal Ego Network!
+
+For more information on each of these steps please see the Help tab inside the app.
 
 
 [Back to the Top](#COVID-19-Tracking)
@@ -54,7 +60,12 @@ how to install the app
 
 ## How To Download Your Data
 
-how to download your snapchat and instagram data with links
+To use this app you must download your Snapchat and Instagram data. To download this data use the two links listed below.
+
+- Snapchat: https://support.snapchat.com/en-US/a/download-my-data
+- Instagram: https://www.instagram.com/accounts/privacy_and_security/
+
+Keep in mind that the more you have used each of these accounts the better the algorithm will be able to determine your friends.
 
 
 [Back to the Top](#COVID-19-Tracking)
