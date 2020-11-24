@@ -14,6 +14,7 @@
 
 To allow user's to create ego networks of their friends and use the ego network to aid in tracking COVID-19 cases and spread.
 
+
 [Back to the Top](#COVID-19-Tracking)
 
 ---
@@ -28,6 +29,7 @@ This project is a mobile app that calculates how close the user is to each of th
 - Flutter
 - Python
 
+
 [Back to the Top](#COVID-19-Tracking)
 
 ---
@@ -35,6 +37,7 @@ This project is a mobile app that calculates how close the user is to each of th
 ## How It Works
 
 how it works and how to use it with example images/screenshots
+
 
 [Back to the Top](#COVID-19-Tracking)
 
@@ -44,6 +47,7 @@ how it works and how to use it with example images/screenshots
 
 how to install the app
 
+
 [Back to the Top](#COVID-19-Tracking)
 
 ---
@@ -52,12 +56,18 @@ how to install the app
 
 how to download your snapchat and instagram data with links
 
+
 [Back to the Top](#COVID-19-Tracking)
 
 ---
 
 ## Author Info
 
-list team members with their github and/or linkedin links if they want
+The team members who helped create this app are:
+
+- Sultan Abdalla Salim Saif Alteneiji
+- Justin Andrews [[LinkedIn](https://www.linkedin.com/in/justin-andrews-cs/) / [GitHub](https://github.com/JustinAndrewsCS)]
+- Bryce Cole
+- Jonah Corbin
 
 [Back to the Top](#COVID-19-Tracking)
