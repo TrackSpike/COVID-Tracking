@@ -20,9 +20,9 @@ To allow user's to create ego networks of their friends and use the ego network 
 
 ## Description
 
-description
+This project is a mobile app that calculates how close the user is to each of their friends using an ego network that calculates friendship levels. The ego network is able to calculate these friendship levels using uploaded Instagram and Snapchat data that must be uploaded to the user’s device. This information is then able to be used to track COVID-19 spread along with who you are most at risk of spreading COVID-19 to or getting COVID-19 from. This app can also be used by researchers who are interested in experimenting with and learning more about Ego Networks.
 
-#### Technologies
+#### Technologies:
 
 - Dart
 - Flutter
