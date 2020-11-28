@@ -17,7 +17,7 @@ class MyAppSultan extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(), // Main Screen of Covid-19 Tracker
+      home: HomePageS(), // Main Screen of Covid-19 Tracker
     );
   }
 }

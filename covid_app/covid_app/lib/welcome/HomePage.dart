@@ -2,14 +2,15 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import '../pages/pyramid_page.dart';
 import 'learnmore.dart';
 
-class HomePage extends StatefulWidget {
+class HomePageS extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _HomePageSState createState() => _HomePageSState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageSState extends State<HomePageS> {
   bool isLoading = false;
   @override
   void initState() {
@@ -39,10 +40,11 @@ class _HomePageState extends State<HomePage> {
                     height: 350,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            begin: Alignment.topRight,
-                            end: Alignment.bottomLeft,
-                            colors: [Color(0xFF3383CD), Color(0xFF11249F)]),
+                      color: Colors.blue,
+                        // gradient: LinearGradient(
+                        //     begin: Alignment.topRight,
+                        //     end: Alignment.bottomLeft,
+                        //     color: [Color(0xFF3383CD), Color(0xFF11249F)]),
                         image: DecorationImage(
                             image: AssetImage("assets/virus.png"))),
                   ),
@@ -171,6 +173,8 @@ class _HomePageState extends State<HomePage> {
                         child: InkWell(
                           onTap: () {
                             //Get Started Screen will be called here by your team for development process
+                             Navigator.push(context,
+               MaterialPageRoute(builder: (context) => PyramidPage()));
                           },
                           child: Center(
                               child: Text(

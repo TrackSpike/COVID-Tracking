@@ -28,11 +28,11 @@ class _ScreenMoreNState extends State<ScreenMoreN> {
               width: double.infinity,
               height: 50,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(5.0),
                 child: Column(
                   children: [
                     Text(
-                      "Main Heading",
+                      "If you confirmed negative Covid-19",
                       style: TextStyle(fontSize: 25, color: Colors.white),
                     ),
                   ],
@@ -42,7 +42,63 @@ class _ScreenMoreNState extends State<ScreenMoreN> {
             Padding(
               padding: const EdgeInsets.all(20.0),
               child: Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consequat congue urna, eget tempor nibh scelerisque eget. Donec a dui sodales, gravida mi vitae, ornare neque. Aliquam erat volutpat. Integer purus augue, interdum ut ipsum interdum, volutpat rhoncus metus. Nunc volutpat tempus interdum. Donec fringilla nibh quis lacus bibendum sagittis. Pellentesque ultrices velit vel ultricies pulvinar. Mauris eu vulputate sapien. Suspendisse porttitor diam gravida libero gravida mollis in sit amet purus. Maecenas lobortis, odio efficitur malesuada ultricies, nisi nulla fermentum felis, non congue felis libero ac eros. Nulla malesuada ultricies tellus, vitae bibendum risus tristique ut. Vestibulum a vulputate urna. Duis metus nisl, hendrerit vitae sodales id, feugiat vel tellus.",
+                "1. Clean your hands often. Use soap and water, or an alcohol-based hand rub",
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.justify,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(
+                "1. Clean your hands often. Use soap and water, or an alcohol-based hand rub",
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.justify,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(
+                "2. Maintain a safe distance from anyone who is coughing or sneezing.",
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.justify,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(
+                "3. Wear a mask when physical distancing is not possible.",
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.justify,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(
+                "4. Don’t touch your eyes, nose or mouth.",
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.justify,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(
+                "5. Cover your nose and mouth with your bent elbow or a tissue when you cough or sneeze",
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.justify,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(
+                "6. Stay home if you feel unwell.",
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.justify,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(
+                "7. If you have a fever, cough and difficulty breathing, seek medical attention.",
                 style: TextStyle(fontSize: 16),
                 textAlign: TextAlign.justify,
               ),

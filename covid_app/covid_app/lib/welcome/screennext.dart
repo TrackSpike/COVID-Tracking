@@ -32,7 +32,7 @@ class _ScreenMoreState extends State<ScreenMore> {
                 child: Column(
                   children: [
                     Text(
-                      "Main Heading",
+                      "If you confirmed positive Covid-19",
                       style: TextStyle(fontSize: 25, color: Colors.white),
                     ),
                   ],
@@ -40,13 +40,78 @@ class _ScreenMoreState extends State<ScreenMore> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(10.0),
               child: Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consequat congue urna, eget tempor nibh scelerisque eget. Donec a dui sodales, gravida mi vitae, ornare neque. Aliquam erat volutpat. Integer purus augue, interdum ut ipsum interdum, volutpat rhoncus metus. Nunc volutpat tempus interdum. Donec fringilla nibh quis lacus bibendum sagittis. Pellentesque ultrices velit vel ultricies pulvinar. Mauris eu vulputate sapien. Suspendisse porttitor diam gravida libero gravida mollis in sit amet purus. Maecenas lobortis, odio efficitur malesuada ultricies, nisi nulla fermentum felis, non congue felis libero ac eros. Nulla malesuada ultricies tellus, vitae bibendum risus tristique ut. Vestibulum a vulputate urna. Duis metus nisl, hendrerit vitae sodales id, feugiat vel tellus.",
+                "1. Stay at home.",
                 style: TextStyle(fontSize: 16),
                 textAlign: TextAlign.justify,
               ),
             ),
+             Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                "2. stay in a specific room.",
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.justify,
+              ),
+            ),
+             Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                "3. Avoid sharing personal items with other people.",
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.justify,
+              ),
+            ),
+             Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                "4. Monitor your symptoms.",
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.justify,
+              ),
+            ),
+             Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                "5. Clean all surfaces.",
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.justify,
+              ),
+            ),
+             Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                "6. Get rest and stay hydrated.",
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.justify,
+              ),
+            ),
+             Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                "7. Cover your cough and sneezes.",
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.justify,
+              ),
+            ),
+             Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                "8. Wash your hands often.",
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.justify,
+              ),
+            ),
+             Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                "9. For medical emergencies, call 911.",
+                style: TextStyle(fontSize: 16),
+                textAlign: TextAlign.left,
+              ),
+            ),
+             
           ],
         ),
       ]),
