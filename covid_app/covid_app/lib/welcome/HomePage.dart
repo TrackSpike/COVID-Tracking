@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:covid_app/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 import '../pages/pyramid_page.dart';
@@ -174,7 +175,7 @@ class _HomePageSState extends State<HomePageS> {
                           onTap: () {
                             //Get Started Screen will be called here by your team for development process
                              Navigator.push(context,
-               MaterialPageRoute(builder: (context) => PyramidPage()));
+               MaterialPageRoute(builder: (context) => HomePage()));
                           },
                           child: Center(
                               child: Text(

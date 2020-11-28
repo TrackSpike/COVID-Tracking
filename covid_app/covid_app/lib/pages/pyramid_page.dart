@@ -63,7 +63,7 @@ class PyramidPage extends StatelessWidget {
                   style: TextStyle(
                       fontFamily: "Roboto", fontWeight: FontWeight.bold)),
             ),
-            PyramidLayer(0, layerNames[0], levelZeroFirstName, numbers[0], 150,
+            PyramidLayer(0, layerNames[0], levelZeroFirstName, numbers[0], 200,
                 layerColors[0], pyramidClick),
             PyramidLayer(1, layerNames[1], levelOneFirstName, numbers[1], 250,
                 layerColors[1], pyramidClick),
@@ -94,7 +94,7 @@ class PyramidLayer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 10.0),
-      height: 50,
+      height: 55,
       width: width,
       child: RaisedButton(
         color: accentColor,
@@ -103,17 +103,15 @@ class PyramidLayer extends StatelessWidget {
         disabledTextColor: Colors.black,
         onPressed: () => onClick(context, this.level),
         child: Column(
-          children: [
-            Text(number.toString() + " " + title,
-                style: TextStyle(
+              children: [
+                Text(number.toString() + " " + title,
+                    style: TextStyle(
                     fontFamily: "Roboto", fontWeight: FontWeight.bold)),
-            Text(
-              friendName + " and others",
-              style: TextStyle(fontSize: 12),
+                Text(friendName + " and others",textAlign: TextAlign.center, style: TextStyle(fontSize: 12))
+              ],
+              mainAxisAlignment: MainAxisAlignment.center
             )
-          ],
-        ),
-      ),
+          ),
     );
   }
 }
