@@ -2,28 +2,29 @@ import 'package:covid_app/algo_result.dart';
 import 'package:covid_app/pages/people_list_page.dart';
 import 'package:flutter/material.dart';
 
+final List<String> layerNames = [
+  "Serious Friends",
+  "Good Friends",
+  "Friends",
+  "Distant Friends"
+];
+
+final List<Color> layerColors = [
+  Colors.redAccent,
+  Colors.orangeAccent,
+  Colors.amberAccent,
+  Colors.yellowAccent
+];
+
+final List<Color> layerTextColors = [
+  Colors.white,
+  Colors.white,
+  Colors.white,
+  Colors.black
+];
+
 class PyramidPage extends StatelessWidget {
   final List<AlgoResult> res;
-  final List<String> layerNames = [
-    "Serious Friends",
-    "Good Friends",
-    "Friends",
-    "Distant Friends"
-  ];
-
-  final List<Color> layerColors = [
-    Colors.redAccent,
-    Colors.orangeAccent,
-    Colors.amberAccent,
-    Colors.yellowAccent
-  ];
-
-  final List<Color> layerTextColors = [
-    Colors.white,
-    Colors.white,
-    Colors.white,
-    Colors.black
-  ];
 
   PyramidPage({this.res});
 
@@ -89,7 +90,7 @@ class PyramidLayer extends StatelessWidget {
 
   PyramidLayer(this.level, this.title, this.friendName, this.number, this.width,
       this.accentColor, this.onClick);
-  
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -97,21 +98,18 @@ class PyramidLayer extends StatelessWidget {
       height: 55,
       width: width,
       child: RaisedButton(
-        color: accentColor,
-        textColor: Colors.black,
-        disabledColor: Colors.grey,
-        disabledTextColor: Colors.black,
-        onPressed: () => onClick(context, this.level),
-        child: Column(
-              children: [
-                Text(number.toString() + " " + title,
-                    style: TextStyle(
+          color: accentColor,
+          textColor: Colors.black,
+          disabledColor: Colors.grey,
+          disabledTextColor: Colors.black,
+          onPressed: () => onClick(context, this.level),
+          child: Column(children: [
+            Text(number.toString() + " " + title,
+                style: TextStyle(
                     fontFamily: "Roboto", fontWeight: FontWeight.bold)),
-                Text(friendName + " and others",textAlign: TextAlign.center, style: TextStyle(fontSize: 12))
-              ],
-              mainAxisAlignment: MainAxisAlignment.center
-            )
-          ),
+            Text(friendName + " and others",
+                textAlign: TextAlign.center, style: TextStyle(fontSize: 12))
+          ], mainAxisAlignment: MainAxisAlignment.center)),
     );
   }
 }

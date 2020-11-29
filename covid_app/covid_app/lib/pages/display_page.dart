@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:covid_app/algo_result.dart';
 import 'package:covid_app/pages/pyramid_page.dart';
+import 'package:covid_app/result_chart.dart';
 import 'package:covid_app/universal_entry.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_app/algo.dart';
@@ -36,33 +37,34 @@ class _DisplayPageState extends State<DisplayPage> {
       appBar: AppBar(
         title: Text("Your Ego Network"),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            FutureBuilder<List<AlgoResult>>(
-              future: getLastResult(),
-              builder: pyramidBuilder,
-            ),
-            OutlineButton(
-              onPressed: calculateEgoNetwork,
-              child: Text((algoData == null) ? "Calculate" : "Re-Calculate"),
-            ),
-          ],
+      body: Container(
+        padding: EdgeInsets.fromLTRB(0, 0, 25, 50),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              FutureBuilder<List<AlgoResult>>(
+                future: getLastResult(),
+                builder: resultBuilder,
+              ),
+              OutlineButton(
+                onPressed: calculateEgoNetwork,
+                child: Text((algoData == null) ? "Calculate" : "Re-Calculate"),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget pyramidBuilder(
+  Widget resultBuilder(
       BuildContext context, AsyncSnapshot<List<AlgoResult>> snapshot) {
     if (snapshot.connectionState == ConnectionState.waiting) {
       return Text("Loading");
     } else if (snapshot.connectionState == ConnectionState.done) {
       if (snapshot.data != null)
-        return PyramidPage(
-          res: snapshot.data,
-        );
+        return ResultsDisplay(snapshot.data);
       else
         return Text("Hit Calculate to see results.");
     }
@@ -98,5 +100,28 @@ class _DisplayPageState extends State<DisplayPage> {
                 ],
               ));
     }
+  }
+}
+
+// Basically a combo on the pyramid and new graph.
+// Needed because the builder only returns one widget.
+class ResultsDisplay extends StatelessWidget {
+  final List<AlgoResult> results;
+
+  ResultsDisplay(this.results);
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          PyramidPage(res: results),
+          ResultChart(results),
+        ],
+      )),
+    );
   }
 }
