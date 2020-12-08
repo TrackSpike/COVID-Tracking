@@ -39,19 +39,19 @@ class _UploadPageState extends State<UploadPage> {
               Text("Data Sources", style: TextStyle(fontSize: 20)),
               DataSourceList(),
               Text("Data Source: " + dataSource),
-              OutlinedButton(
+              RaisedButton(
                 onPressed: () {
                   openFilePicker(context, InstagramParser());
                 },
                 child: Text("Upload Instagram"),
               ),
-              OutlinedButton(
+              RaisedButton(
                 onPressed: () {
                   openFilePicker(context, SnapchatParser());
                 },
                 child: Text("Upload Snapchat"),
               ),
-              OutlinedButton(
+              RaisedButton(
                 onPressed: () {
                   openFilePicker(context, InstagramParser());
                 },
