@@ -80,7 +80,7 @@ Keep in mind that the more you have used each of these accounts the better the a
 The team members who helped create this app are:
 
 - Sultan Abdalla Salim Saif Alteneiji
-- Justin Andrews [[LinkedIn](https://www.linkedin.com/in/justin-andrews-cs/) / [GitHub](https://github.com/JustinAndrewsCS)]
+- Justin Andrews [[GitHub](https://github.com/JustinAndrewsCS)]
 - Bryce Cole
 - Jonah Corbin
 
