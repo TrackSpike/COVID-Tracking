@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:covid_app/parsers/instagram_parser.dart';
 import 'package:covid_app/globals.dart' as globals;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UploadPage extends StatefulWidget {
   UploadPage({Key key}) : super(key: key);

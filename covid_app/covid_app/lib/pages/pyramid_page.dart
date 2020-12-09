@@ -46,10 +46,14 @@ class PyramidPage extends StatelessWidget {
       numbers[score.level] += 1;
     }
 
-    String levelZeroFirstName = res.where((e) => e.level == 0).first.name;
-    String levelOneFirstName = res.where((e) => e.level == 1).first.name;
-    String levelTwoFirstName = res.where((e) => e.level == 2).first.name;
-    String levelThreeFirstName = res.where((e) => e.level == 3).first.name;
+    String levelZeroFirstName =
+        res.where((e) => e.level == 0).first.getDisplayName();
+    String levelOneFirstName =
+        res.where((e) => e.level == 1).first.getDisplayName();
+    String levelTwoFirstName =
+        res.where((e) => e.level == 2).first.getDisplayName();
+    String levelThreeFirstName =
+        res.where((e) => e.level == 3).first.getDisplayName();
 
     return Expanded(
       child: Center(

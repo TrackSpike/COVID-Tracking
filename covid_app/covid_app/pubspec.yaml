@@ -26,7 +26,7 @@ dependencies:
   charts_flutter:
   material_design_icons_flutter: 4.0.5655
   flutter_markdown:
-  
+  shared_preferences:
 
 
   # The following adds the Cupertino Icons font to your application.
