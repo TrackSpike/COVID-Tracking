@@ -20,15 +20,27 @@ class FacebookParser extends Parser {
     String filename = path + "/likes_and_reactions/posts_and_comments.json";
     String raw = await File(filename).readAsString();
     Map<String, dynamic> jsonResult = json.decode(raw);
-    print(jsonResult["reactions"][0]);
     for (Map<String, dynamic> like in jsonResult["reactions"]) {
-      String timestamp = like["timestamp"];
-      result.add(UniversalEntry("facebook", like["title"], formatTime(timestamp), "facebook_like"));
+      int timestamp = like["timestamp"];
+      String formatted_likee = formatLikee(like["title"]);
+      if(formatted_likee!="ERROR") {
+        result.add(UniversalEntry("facebook", formatted_likee, DateTime.fromMillisecondsSinceEpoch(timestamp*1000), "facebook_like"));
+      }
     }
-    print(result);
+    return result;
   }
 
-  DateTime formatTime(String time) {
-    return DateTime.parse(time);
+  String formatLikee(String title) {
+    String formatted_string = "";
+    try {
+      if(title.indexOf("likes")>-1) {
+        formatted_string = title.substring(title.indexOf("likes")+6,title.indexOf("'s"));
+      } else {
+        formatted_string = title.substring(title.indexOf("liked")+6, title.indexOf("'s"));
+      }
+    } catch(RangeError) {
+      return "ERROR";
+    }
+    return formatted_string;
   }
 }
