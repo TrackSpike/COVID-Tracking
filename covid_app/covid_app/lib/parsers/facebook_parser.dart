@@ -10,10 +10,25 @@ class FacebookParser extends Parser {
 
   @override
   Future<List<UniversalEntry>> format(String path) async {
-    return await _parseMessages(path) + await _parseLikes(path);
+    return await _parseLikes(path);
   }
 
   Future<List<UniversalEntry>> _parseMessages(String path) async {}
 
-  Future<List<UniversalEntry>> _parseLikes(String path) async {}
+  Future<List<UniversalEntry>> _parseLikes(String path) async {
+    List<UniversalEntry> result = [];
+    String filename = path + "/likes_and_reactions/posts_and_comments.json";
+    String raw = await File(filename).readAsString();
+    Map<String, dynamic> jsonResult = json.decode(raw);
+    print(jsonResult["reactions"][0]);
+    for (Map<String, dynamic> like in jsonResult["reactions"]) {
+      String timestamp = like["timestamp"];
+      result.add(UniversalEntry("facebook", like["title"], formatTime(timestamp), "facebook_like"));
+    }
+    print(result);
+  }
+
+  DateTime formatTime(String time) {
+    return DateTime.parse(time);
+  }
 }
