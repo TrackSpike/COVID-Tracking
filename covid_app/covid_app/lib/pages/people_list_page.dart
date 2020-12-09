@@ -16,12 +16,9 @@ class PeopleListPage extends StatelessWidget {
         iconTheme: IconThemeData(
           color: textColor,
         ),
-        brightness: (textColor==Colors.white) ? Brightness.dark: Brightness.light,
-        title: Text(
-            title,
-            style:
-            TextStyle(color: textColor)
-        ),
+        brightness:
+            (textColor == Colors.white) ? Brightness.dark : Brightness.light,
+        title: Text(title, style: TextStyle(color: textColor)),
         backgroundColor: accentColor,
       ),
       body: Center(
@@ -58,7 +55,7 @@ class PersonDisplayWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Text(person.name),
+              Text(person.getDisplayName()),
               Text(
                 person.score.toStringAsFixed(2),
                 style: TextStyle(fontWeight: FontWeight.bold),
