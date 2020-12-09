@@ -36,7 +36,7 @@ This project is a mobile app that calculates how close the user is to each of th
 
 ## How It Works
 
-1. Download your Snapchat and Instagram data.
+1. Download your Snapchat, Instagram, and Facebook data.
 2. Unzip the downloaded folder and then upload it to the device the application is installed on.
 3. Link your data to the app using the Upload Data tab inside the app.
 4. If you wish to customize the weights the algorithm will use when calculating your Ego Network, visit the Weights tab in the app. This step is optional.
@@ -66,6 +66,7 @@ To use this app you must download your Snapchat and Instagram data. To download 
 
 - Snapchat: https://support.snapchat.com/en-US/a/download-my-data
 - Instagram: https://www.instagram.com/accounts/privacy_and_security/
+- Facebook: https://www.facebook.com/help/1701730696756992
 
 Keep in mind that the more you have used each of these accounts the better the algorithm will be able to determine your friends.
 
@@ -79,7 +80,7 @@ Keep in mind that the more you have used each of these accounts the better the a
 The team members who helped create this app are:
 
 - Sultan Abdalla Salim Saif Alteneiji
-- Justin Andrews [[LinkedIn](https://www.linkedin.com/in/justin-andrews-cs/) / [GitHub](https://github.com/JustinAndrewsCS)]
+- Justin Andrews [[GitHub](https://github.com/JustinAndrewsCS)]
 - Bryce Cole
 - Jonah Corbin
 
