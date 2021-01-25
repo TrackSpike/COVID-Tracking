@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:covid_app/parsers/facebook_parser.dart';
 import 'package:covid_app/parsers/parser.dart';
 import 'package:covid_app/parsers/snapchat_parser.dart';
 import 'package:covid_app/universal_entry.dart';
@@ -54,7 +55,7 @@ class _UploadPageState extends State<UploadPage> {
               ),
               RaisedButton(
                 onPressed: () {
-                  openFilePicker(context, InstagramParser());
+                  openFilePicker(context, FacebookParser());
                 },
                 child: Text("Upload Facebook"),
               ),
