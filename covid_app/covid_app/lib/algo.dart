@@ -2,6 +2,7 @@ import 'dart:async' show Future;
 import 'dart:convert';
 import 'dart:io';
 import 'package:covid_app/algo_result.dart';
+import 'package:covid_app/k_means.dart';
 import 'package:covid_app/universal_entry.dart';
 import 'package:path_provider/path_provider.dart';
 import 'weights_handler.dart';
@@ -13,8 +14,10 @@ Future<List<AlgoResult>> calculate(List<UniversalEntry> data) async {
   Map<String, double> results = {};
   data.forEach((entry) {
     DateTime time = entry.time;
-    double dif =
-        DateTime.now().difference(time).inDays.toDouble(); //todo int to double
+    double dif = getLatestInteraction(data)
+        .difference(time)
+        .inDays
+        .toDouble(); //todo int to double
     double weight = weights[entry.type];
     double value =
         (weight - timeWeight * dif * weight).clamp(0.0, double.infinity);
@@ -48,16 +51,11 @@ Future<List<AlgoResult>> getLastResult() async {
 }
 
 void _calculateLevels(List<AlgoResult> results) {
-  //This is not the best way to do it, it is just a placeholder.
-  for (int i = 0; i < results.length; i++) {
-    if (i / results.length < 0.05)
-      results[i].level = 0;
-    else if (i / results.length < 0.15)
-      results[i].level = 1;
-    else if (i / results.length < 0.35)
-      results[i].level = 2;
-    else
-      results[i].level = 3;
+  List<double> values =
+      List<double>.generate(results.length, (i) => results[i].score);
+  List<int> clusters = kMeansCluster(4, values);
+  for (int i = 0; i < clusters.length; i++) {
+    results[i].level = clusters[i];
   }
 }
 
@@ -66,4 +64,12 @@ void _writeFile(List<AlgoResult> results) async {
   Directory directory = await getApplicationDocumentsDirectory();
   File fileNew = File("${directory.path}/lastCalculatedAlgo.json");
   await fileNew.writeAsString(jsonEncode(jsonF));
+}
+
+DateTime getLatestInteraction(List<UniversalEntry> results) {
+  DateTime latest = DateTime.fromMicrosecondsSinceEpoch(0);
+  for (UniversalEntry entry in results) {
+    if (entry.time.isAfter(latest)) latest = entry.time;
+  }
+  return latest;
 }
