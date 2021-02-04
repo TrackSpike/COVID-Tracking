@@ -21,13 +21,15 @@ class InstagramParser extends Parser {
         jsonResultA.map((c) => c as Map<String, dynamic>).toList();
     for (Map<String, dynamic> chat in jsonResult) {
       for (Map<String, dynamic> message in chat["conversation"]) {
-        result.add(UniversalEntry(
+        var entry = UniversalEntry(
             "instagram",
             message["sender"],
             formatTime(message["created_at"]),
             (chat["participants"].length > 2)
                 ? "instagram_group_message"
-                : "instagram_direct_message"));
+                : "instagram_direct_message");
+        if (message.containsKey("text")) entry.content = message["text"];
+        result.add(entry);
       }
     }
     return result;

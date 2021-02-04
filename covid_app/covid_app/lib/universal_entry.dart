@@ -3,8 +3,10 @@ class UniversalEntry {
   String person;
   String source;
   DateTime time;
+  String content;
 
-  UniversalEntry(this.source, this.person, this.time, this.type);
+  UniversalEntry(this.source, this.person, this.time, this.type,
+      {this.content});
 
   UniversalEntry.fromJson(dynamic jsonObject) {
     type = jsonObject["type"];
