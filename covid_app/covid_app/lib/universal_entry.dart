@@ -3,7 +3,7 @@ class UniversalEntry {
   String person;
   String source;
   DateTime time;
-  String content;
+  String content; //Optional
 
   UniversalEntry(this.source, this.person, this.time, this.type,
       {this.content});

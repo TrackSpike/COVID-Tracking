@@ -43,21 +43,20 @@ List<int> doRun(int k, List<double> input) {
   return clusters;
 }
 
-List<int> classifyClusters(List<double> input, List<double> centroids) {
-  return List<int>.generate(input.length, (i) {
-    double j = input[i];
-    double minDist = double.maxFinite;
-    int classification = -1;
-    for (int k = 0; k < centroids.length; k++) {
-      double cen = centroids[k];
-      if ((cen - j).abs() < minDist) {
-        minDist = (cen - j).abs();
-        classification = k;
+List<int> classifyClusters(List<double> input, List<double> centroids) =>
+    List<int>.generate(input.length, (i) {
+      double j = input[i];
+      double minDist = double.maxFinite;
+      int classification = -1;
+      for (int k = 0; k < centroids.length; k++) {
+        double cen = centroids[k];
+        if ((cen - j).abs() < minDist) {
+          minDist = (cen - j).abs();
+          classification = k;
+        }
       }
-    }
-    return classification;
-  });
-}
+      return classification;
+    });
 
 double evaluateRun(int k, List<double> input, List<int> clusters) {
   List<double> means = meanOfEachGroup(k, input, clusters);
