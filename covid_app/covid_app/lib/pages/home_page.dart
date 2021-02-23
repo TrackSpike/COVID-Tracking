@@ -104,6 +104,8 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
 
+          //CDC Guidelines
+
           //HelpPage
           BottomNavigationBarItem(
             icon: Icon(

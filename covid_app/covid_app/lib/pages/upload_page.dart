@@ -12,6 +12,8 @@ import 'package:covid_app/parsers/instagram_parser.dart';
 import 'package:covid_app/globals.dart' as globals;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'display_page.dart';
+
 class UploadPage extends StatefulWidget {
   UploadPage({Key key}) : super(key: key);
 
@@ -106,8 +108,11 @@ class _UploadPageState extends State<UploadPage> {
                 RaisedButton(
                   child: Text("Nice!"),
                   onPressed: () {
+                    //removes popup dialog box
                     Navigator.pushNamedAndRemoveUntil(
                         context, '/', (_) => false);
+                    //navigates to ego network page, 0 is the page index it navigates to
+                    DefaultTabController.of(context).animateTo(0);
                   },
                 ),
               ],

@@ -59,6 +59,7 @@ class _WeightsListState extends State<WeightsList> {
                         itemCount: snapshot.data.length,
                         itemBuilder: (BuildContext context, int index) =>
                             Container(
+                                alignment: Alignment.centerLeft,
                                 width: double.maxFinite,
                                 height: 75,
                                 child: PersonDisplayWidget(
@@ -103,7 +104,9 @@ class _PersonDisplayWidgetState extends State<PersonDisplayWidget> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text(widget.weight.key),
+                Text(
+                    widget.weight.key,
+                ),
                 Text(
                   widget.weight.value.toStringAsFixed(2),
                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -118,7 +121,7 @@ class _PersonDisplayWidgetState extends State<PersonDisplayWidget> {
     final selectedFontSize = await showDialog<double>(
         context: context,
         builder: (BuildContext context) => ValuePickerDialog(
-              initalValue: widget.weight.value,
+              initialValue: widget.weight.value,
             ));
     setState(() {
       widget.weight.value = selectedFontSize;
@@ -135,9 +138,9 @@ class _PersonDisplayWidgetState extends State<PersonDisplayWidget> {
 
 class ValuePickerDialog extends StatefulWidget {
   /// initial selection for the slider
-  final double initalValue;
+  final double initialValue;
 
-  const ValuePickerDialog({Key key, this.initalValue}) : super(key: key);
+  const ValuePickerDialog({Key key, this.initialValue}) : super(key: key);
 
   @override
   _ValuePickerDialogState createState() => _ValuePickerDialogState();
@@ -150,13 +153,16 @@ class _ValuePickerDialogState extends State<ValuePickerDialog> {
   @override
   void initState() {
     super.initState();
-    _value = widget.initalValue;
+    _value = widget.initialValue;
   }
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text("Edit Weight Value"),
+      title: Text(
+          "Edit Weight Value",
+           textAlign: TextAlign.center,
+      ),
       content: Container(
         height: 100,
         child: Column(
