@@ -5,6 +5,7 @@ bool presentatinMode = true;
 class AlgoResult {
   String name;
   double score;
+  double emotionScore;
   int level;
 
   AlgoResult(this.name, this.score, this.level);

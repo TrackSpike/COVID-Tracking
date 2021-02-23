@@ -1,6 +1,9 @@
 import 'package:covid_app/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
+import 'emotion_classifier/classifier.dart';
+import 'welcome/HomePage.dart';
+
 void main() {
   runApp(MyApp());
 }
