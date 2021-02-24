@@ -5,6 +5,8 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:covid_app/pages/display_page.dart';
 import 'package:covid_app/pages/help_page.dart';
 
+import 'COVID_CDC_Guidelines.dart';
+
 class HomePage extends StatefulWidget {
   final int changedTab;
   HomePage({Key key, this.changedTab}) : super(key: key);
@@ -18,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   // controls the pages
   PageController _pageController = PageController();
   // the different screens of the navigation bar
-  List<Widget> _screens = [DisplayPage(), UploadPage(), WeightsPage(), HelpPage()];
+  List<Widget> _screens = [DisplayPage(), UploadPage(), WeightsPage(), COVID_CDC_Guidelines(), HelpPage()];
   // the index of the currently selected screen on the navigation bar
   int _selectedIndex = 0;
 
@@ -104,16 +106,34 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
 
+<<<<<<< Updated upstream
+          //CDC Guidelines
+=======
+          //GuidelinesPage
+          BottomNavigationBarItem(
+              icon: Icon(
+                MdiIcons.accountQuestion,
+                color: _selectedIndex == 3 ? Colors.blue : Colors.grey,
+              ),
+              title: Text(
+                "CDC Guidelines",
+                style: TextStyle(
+                  color: _selectedIndex == 3 ? Colors.blue : Colors.grey,
+                ),
+              )
+          ),
+>>>>>>> Stashed changes
+
           //HelpPage
           BottomNavigationBarItem(
             icon: Icon(
               MdiIcons.accountQuestion,
-              color: _selectedIndex == 3 ? Colors.blue : Colors.grey,
+              color: _selectedIndex == 4 ? Colors.blue : Colors.grey,
             ),
             title: Text(
               "Help",
               style: TextStyle(
-                color: _selectedIndex == 3 ? Colors.blue : Colors.grey,
+                color: _selectedIndex == 4 ? Colors.blue : Colors.grey,
               ),
             )
           )
