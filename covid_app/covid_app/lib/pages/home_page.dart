@@ -106,9 +106,9 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
 
-<<<<<<< Updated upstream
+
           //CDC Guidelines
-=======
+
           //GuidelinesPage
           BottomNavigationBarItem(
               icon: Icon(
@@ -122,7 +122,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               )
           ),
->>>>>>> Stashed changes
+
 
           //HelpPage
           BottomNavigationBarItem(
