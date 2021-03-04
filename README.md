@@ -79,17 +79,17 @@ Keep in mind that the more you have used each of these accounts the better the a
 
 The team members who helped create this app are:
 
-Spring 2021:
-- Justin Andrews
-- Bryce Cole
-- Victoria Jordan
-- Jacob Preseau
-- Chandra Teja Tiriveedhi
+- Spring 2021:
+  - Justin Andrews
+  - Bryce Cole
+  - Victoria Jordan
+  - Jacob Preseau
+  - Chandra Teja Tiriveedhi
 
-Fall 2020:
-- Sultan Abdalla Salim Saif Alteneiji
-- Justin Andrews
-- Bryce Cole
-- Jonah Corbin
+- Fall 2020:
+  - Sultan Abdalla Salim Saif Alteneiji
+  - Justin Andrews
+  - Bryce Cole
+  - Jonah Corbin
 
 [Back to the Top](#COVID-19-Tracking)
