@@ -105,15 +105,8 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-<<<<<<< Updated upstream
 
-
-          //CDC Guidelines
-
-=======
-          
->>>>>>> Stashed changes
-          //GuidelinesPage
+          //CDCGuidelinesPage
           BottomNavigationBarItem(
               icon: Icon(
                 MdiIcons.accountQuestion,
@@ -126,10 +119,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               )
           ),
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 
           //HelpPage
           BottomNavigationBarItem(
