@@ -51,7 +51,7 @@ For more information on each of these steps please see the Help tab inside the a
 
 ## How To Install and Run
 
-To be able to run this application download this GitHub repository and then then run covid_app/covid_app/main.dart. To do this you must have Flutter and Dart installed and set up for your machine along with a way to run the app. Running the app can be done by connecting a mobile device or by using an emulator. We recommend using an emulator alongside either VS Code, Android Studio, or Xcode depending on your preference and operating system.
+To be able to run this application download this GitHub repository and then then run covid_app/covid_app/main.dart. To do this you must have Flutter and Dart installed and set up for your machine along with a way to run the app. Running the app can be done by connecting a mobile device or by using an emulator. We recommend using an emulator alongside either Visual Studio Code, Android Studio, or Xcode depending on your preference and operating system.
 
 In the future we would like to add this app to the appstore to make the process of aquiring the app easier.
 
@@ -79,9 +79,17 @@ Keep in mind that the more you have used each of these accounts the better the a
 
 The team members who helped create this app are:
 
-- Sultan Abdalla Salim Saif Alteneiji
-- Justin Andrews [[GitHub](https://github.com/JustinAndrewsCS)]
-- Bryce Cole
-- Jonah Corbin
+- Spring 2021:
+  - Justin Andrews
+  - Bryce Cole
+  - Victoria Jordan
+  - Jacob Preseau
+  - Chandra Teja Tiriveedhi
+
+- Fall 2020:
+  - Sultan Abdalla Salim Saif Alteneiji
+  - Justin Andrews
+  - Bryce Cole
+  - Jonah Corbin
 
 [Back to the Top](#COVID-19-Tracking)
