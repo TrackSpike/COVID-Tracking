@@ -84,6 +84,7 @@ class _DisplayPageState extends State<DisplayPage> {
         algoData = result;
       });
     } catch (e) {
+      print(e);
       showDialog(
           context: context,
           builder: (_) => AlertDialog(

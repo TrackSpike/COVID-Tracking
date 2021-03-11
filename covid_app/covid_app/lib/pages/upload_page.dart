@@ -173,10 +173,41 @@ class DataSourceListEntry extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.delete),
             color: Colors.red,
-            onPressed: () => {},
+            onPressed: () => deleteSource(context, dataSource),
           )
         ],
       ),
     );
+  }
+
+  void deleteSource(context, String source) async {
+    Directory directory = await getApplicationDocumentsDirectory();
+    File dataFile = File("${directory.path}/lastUploadedData.json");
+    List<UniversalEntry> entries =
+        (json.decode(await dataFile.readAsString()) as List<dynamic>)
+            .map((e) => UniversalEntry.fromJson(e))
+            .toList();
+    entries.removeWhere((UniversalEntry entry) => entry.source == source);
+    List<Map<String, dynamic>> entriesJson =
+        entries.map((e) => e.toJson()).toList();
+    await dataFile.writeAsString(json.encode(entriesJson));
+    showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+              title: Text("Success!"),
+              content: Text("$source was removed successfully."),
+              actions: <Widget>[
+                RaisedButton(
+                  child: Text("Nice!"),
+                  onPressed: () {
+                    //removes popup dialog box
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/', (_) => false);
+                    //navigates to ego network page, 0 is the page index it navigates to
+                    DefaultTabController.of(context).animateTo(0);
+                  },
+                ),
+              ],
+            ));
   }
 }

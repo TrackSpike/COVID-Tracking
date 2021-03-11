@@ -82,6 +82,7 @@ List<double> meanOfEachGroup(int k, List<double> input, List<int> clusters) {
 //So the list it generates is not in any order because init points are random;y
 //generated. This just swaps ex) 2 2 3 3 1 -> 1 1 2 2 3
 List<int> orderClusters(List<int> clusters) {
+  if (clusters == null || clusters.length == 0) return List<int>();
   int last = -1;
   int counter = -1;
   return List<int>.generate(clusters.length, (i) {
