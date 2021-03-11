@@ -8,9 +8,6 @@ class WeightsPage extends StatelessWidget {
     final WeightsList weightsList = WeightsList();
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Colors.blue,
-        ),
         title: Text(
           "Algo Weights",
         ),
@@ -105,7 +102,7 @@ class _PersonDisplayWidgetState extends State<PersonDisplayWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
-                    widget.weight.key,
+                  widget.weight.key,
                 ),
                 Text(
                   widget.weight.value.toStringAsFixed(2),
@@ -160,8 +157,8 @@ class _ValuePickerDialogState extends State<ValuePickerDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Text(
-          "Edit Weight Value",
-           textAlign: TextAlign.center,
+        "Edit Weight Value",
+        textAlign: TextAlign.center,
       ),
       content: Container(
         height: 100,

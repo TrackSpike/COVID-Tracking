@@ -1,3 +1,4 @@
+import 'package:covid_app/pages/settings_page.dart';
 import 'package:covid_app/pages/upload_page.dart';
 import 'package:covid_app/pages/weights_page.dart';
 import 'package:flutter/material.dart';
@@ -23,9 +24,8 @@ class _HomePageState extends State<HomePage> {
   List<Widget> _screens = [
     DisplayPage(),
     UploadPage(),
-    WeightsPage(),
     CovidCdcGuidelinesPage(),
-    HelpPage()
+    SettingsPage(),
   ];
   // the index of the currently selected screen on the navigation bar
   int _selectedIndex = 0;
@@ -97,43 +97,29 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
 
-          // Weights page
-          BottomNavigationBarItem(
-            icon: Icon(
-              MdiIcons.accountCog,
-              color: _selectedIndex == 2 ? Colors.blue : Colors.grey,
-            ),
-            title: Text(
-              "Weights",
-              style: TextStyle(
-                color: _selectedIndex == 2 ? Colors.blue : Colors.grey,
-              ),
-            ),
-          ),
-
           //CDCGuidelinesPage
           BottomNavigationBarItem(
               icon: Icon(
                 MdiIcons.accountQuestion,
-                color: _selectedIndex == 3 ? Colors.blue : Colors.grey,
+                color: _selectedIndex == 2 ? Colors.blue : Colors.grey,
               ),
               title: Text(
                 "CDC Guidelines",
                 style: TextStyle(
-                  color: _selectedIndex == 3 ? Colors.blue : Colors.grey,
+                  color: _selectedIndex == 2 ? Colors.blue : Colors.grey,
                 ),
               )),
 
-          //HelpPage
+          //Settings Page
           BottomNavigationBarItem(
               icon: Icon(
-                MdiIcons.accountQuestion,
-                color: _selectedIndex == 4 ? Colors.blue : Colors.grey,
+                Icons.settings,
+                color: _selectedIndex == 3 ? Colors.blue : Colors.grey,
               ),
               title: Text(
-                "Help",
+                "Settings",
                 style: TextStyle(
-                  color: _selectedIndex == 4 ? Colors.blue : Colors.grey,
+                  color: _selectedIndex == 3 ? Colors.blue : Colors.grey,
                 ),
               ))
         ],
