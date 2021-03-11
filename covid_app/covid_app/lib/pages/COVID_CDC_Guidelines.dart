@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class COVID_CDC_Guidelines extends StatefulWidget {
-  COVID_CDC_Guidelines({Key key}) : super(key: key);
+class CovidCdcGuidelinesPage extends StatefulWidget {
+  CovidCdcGuidelinesPage({Key key}) : super(key: key);
 
   @override
-  _COVID_CDC_GuidelinesState createState() => _COVID_CDC_GuidelinesState();
+  _CovidCdcGuidelinesPageState createState() => _CovidCdcGuidelinesPageState();
 }
 
-class _COVID_CDC_GuidelinesState extends State<COVID_CDC_Guidelines> {
+class _CovidCdcGuidelinesPageState extends State<CovidCdcGuidelinesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('CDC Guidelines'),
+        title: Text("CDC Guidelines"),
       ),
       body: Center(
         child: Padding(
