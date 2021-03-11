@@ -20,10 +20,16 @@ class Classifier {
   // TensorFlow Lite Interpreter object
   Interpreter _interpreter;
 
+  Future _doneFuture;
+  Future get initializationDone => _doneFuture;
+
   Classifier() {
-    // Load model when the classifier is initialized.
-    _loadModel();
-    _loadDictionary();
+    _doneFuture = init();
+  }
+
+  Future init() async {
+    await _loadModel();
+    await _loadDictionary();
   }
 
   void _loadModel() async {
