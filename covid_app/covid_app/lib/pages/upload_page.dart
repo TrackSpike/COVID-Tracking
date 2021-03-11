@@ -103,7 +103,7 @@ class _UploadPageState extends State<UploadPage> {
         context: context,
         builder: (_) => AlertDialog(
               title: Text("Success!"),
-              content: Text("The ${parser.name} was added successfully."),
+              content: Text("${parser.name} was added successfully."),
               actions: <Widget>[
                 RaisedButton(
                   child: Text("Nice!"),
