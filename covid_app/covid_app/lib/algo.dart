@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:covid_app/algo_result.dart';
 import 'package:covid_app/k_means.dart';
+import 'package:covid_app/shared_prefs.dart';
 import 'package:covid_app/universal_entry.dart';
 import 'package:path_provider/path_provider.dart';
 import 'weights_handler.dart';
@@ -12,8 +13,11 @@ final timeWeight = 0.01;
 final emotionWeight = 3;
 
 Future<List<AlgoResult>> calculate(List<UniversalEntry> data) async {
-  Classifier classifier = Classifier();
-  await classifier.initializationDone;
+  Classifier classifier;
+  if (sharedPrefs.useEmotionNn) {
+    classifier = Classifier();
+    await classifier.initializationDone;
+  }
   Map<String, double> weights = await getWeights();
   Map<String, double> results = {};
   data.forEach((entry) {
@@ -23,13 +27,16 @@ Future<List<AlgoResult>> calculate(List<UniversalEntry> data) async {
         .inDays
         .toDouble(); //todo int to double
     double weight = weights[entry.type];
+    double value =
+        (weight - timeWeight * dif * weight).clamp(0.0, double.infinity);
     //Emotion
-    double emotionScore = entry.content != null && entry.content.isNotEmpty
-        ? classifier.classify(entry.content)
-        : 0;
-    emotionScore *= emotionWeight;
-    double value = (weight - timeWeight * dif * weight + emotionScore)
-        .clamp(0.0, double.infinity);
+    if (sharedPrefs.useEmotionNn) {
+      double emotionScore = entry.content != null && entry.content.isNotEmpty
+          ? classifier.classify(entry.content)
+          : 0;
+      emotionScore *= emotionWeight;
+      value = (value + emotionScore).clamp(0.0, double.infinity);
+    }
     results[entry.person] = (results[entry.person] ?? 0) + value;
   });
   results.removeWhere((key, value) => value == 0);

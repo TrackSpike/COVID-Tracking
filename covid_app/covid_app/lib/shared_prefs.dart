@@ -14,6 +14,9 @@ class SharedPrefs {
       _sharedPrefs.getBool("presentationMode") ?? false;
   set presentationMode(bool value) =>
       _sharedPrefs.setBool("presentationMode", value);
+
+  bool get useEmotionNn => _sharedPrefs.getBool("useEmotionNn") ?? true;
+  set useEmotionNn(bool value) => _sharedPrefs.setBool("useEmotionNn", value);
 }
 
 final SharedPrefs sharedPrefs = SharedPrefs();
