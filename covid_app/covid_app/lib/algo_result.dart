@@ -1,6 +1,6 @@
 import 'dart:math';
 
-bool presentatinMode = true;
+import 'package:covid_app/shared_prefs.dart';
 
 class AlgoResult {
   String name;
@@ -21,7 +21,7 @@ class AlgoResult {
   }
 
   String getDisplayName() {
-    if (presentatinMode) {
+    if (sharedPrefs.presentationMode) {
       Random rand = Random();
       return "User " + rand.nextInt(1000).toString();
     } else
