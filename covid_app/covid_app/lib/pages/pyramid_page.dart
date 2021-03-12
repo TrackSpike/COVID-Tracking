@@ -111,7 +111,7 @@ class PyramidLayer extends StatelessWidget {
             Text(number.toString() + " " + title,
                 style: TextStyle(
                     fontFamily: "Roboto", fontWeight: FontWeight.bold)),
-            Text(friendName + " and others",
+            Text((number > 1 ? "$friendName and others" : friendName),
                 textAlign: TextAlign.center, style: TextStyle(fontSize: 12))
           ], mainAxisAlignment: MainAxisAlignment.center)),
     );

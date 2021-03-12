@@ -17,6 +17,10 @@ class SharedPrefs {
 
   bool get useEmotionNn => _sharedPrefs.getBool("useEmotionNn") ?? true;
   set useEmotionNn(bool value) => _sharedPrefs.setBool("useEmotionNn", value);
+
+  String get excludedName => _sharedPrefs.getString("excludedName") ?? "";
+  set excludedName(String value) =>
+      _sharedPrefs.setString("excludedName", value);
 }
 
 final SharedPrefs sharedPrefs = SharedPrefs();

@@ -40,6 +40,7 @@ Future<List<AlgoResult>> calculate(List<UniversalEntry> data) async {
     results[entry.person] = (results[entry.person] ?? 0) + value;
   });
   results.removeWhere((key, value) => value == 0);
+  results.removeWhere((key, value) => key == sharedPrefs.excludedName);
   List<AlgoResult> resultTyped = [];
   results.forEach((key, value) => resultTyped.add(AlgoResult(key, value, 0)));
   resultTyped.sort((a, b) => b.score.compareTo(a.score));
