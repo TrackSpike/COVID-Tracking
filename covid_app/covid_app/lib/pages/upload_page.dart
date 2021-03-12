@@ -9,10 +9,6 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:covid_app/parsers/instagram_parser.dart';
-import 'package:covid_app/globals.dart' as globals;
-import 'package:shared_preferences/shared_preferences.dart';
-
-import 'display_page.dart';
 
 class UploadPage extends StatefulWidget {
   UploadPage({Key key}) : super(key: key);
@@ -24,12 +20,6 @@ class UploadPage extends StatefulWidget {
 class _UploadPageState extends State<UploadPage> {
   @override
   Widget build(BuildContext context) {
-    String dataSource = (globals.uploadedFileName != null)
-        ? globals.uploadedFileName
-        : "No data source";
-    String uploadButton = (globals.uploadedFileName != null)
-        ? "Overwrite Social Data"
-        : "Load Social Data";
     return Scaffold(
       appBar: AppBar(
         title: Text("Upload Your Data"),
@@ -42,7 +32,6 @@ class _UploadPageState extends State<UploadPage> {
             children: [
               Text("Data Sources", style: TextStyle(fontSize: 20)),
               DataSourceList(),
-              Text("Data Source: " + dataSource),
               RaisedButton(
                 onPressed: () {
                   openFilePicker(context, InstagramParser());
@@ -79,7 +68,6 @@ class _UploadPageState extends State<UploadPage> {
   }
 
   void appendEntries(context, String pathResult, Parser parser) async {
-    globals.uploadedFileName = pathResult;
     List<UniversalEntry> newEntries = await parser.format(pathResult);
     Directory directory = await getApplicationDocumentsDirectory();
     File dataFile = File("${directory.path}/lastUploadedData.json");
