@@ -27,7 +27,7 @@ dependencies:
   flutter_markdown:
   shared_preferences:
   tflite_flutter:
-  vm_service: ">= 4.2.0 <7.0.0"
+  vm_service: ">=4.2.0 <7.0.0"
   integration_test:
 
 
