@@ -15,7 +15,7 @@ class SettingsPage extends StatelessWidget {
         children: [
           SettingsToggleWidget("Presentation Mode", "presentationMode"),
           SettingsToggleWidget("Use Emotion NN", "useEmotionNn"),
-          SettingsToggleWidget("Use Log Scaleing", "useLog"),
+          SettingsToggleWidget("Use Log Scaling", "useLog"),
           SettingsInputWidget("Exclude Name", "excludedName"),
           SettingsWidget(WeightsPage(), "Edit Weights", Icon(Icons.edit)),
           SettingsWidget(HelpPage(), "Help Page", Icon(Icons.help)),
