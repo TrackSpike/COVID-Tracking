@@ -97,20 +97,31 @@ class _PersonDisplayWidgetState extends State<PersonDisplayWidget> {
           onTap: () => tapped(context),
           child: Card(
             elevation: 5,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  widget.weight.key,
-                ),
-                Text(
-                  widget.weight.value.toStringAsFixed(2),
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                )
-              ],
-            ),
+            child: Padding(
+              padding: EdgeInsets.only(left: 25, right: 25),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    widget.weight.key,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    widget.weight.value.toStringAsFixed(2),
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )
+                ], // Children
+              )
+            )
           ),
-        ));
+        )
+    );
   }
 
   void tapped(BuildContext context) async {
