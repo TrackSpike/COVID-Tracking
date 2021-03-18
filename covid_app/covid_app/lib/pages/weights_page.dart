@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import '../weights_handler.dart';
 
@@ -116,6 +115,8 @@ class _PersonDisplayWidgetState extends State<PersonDisplayWidget> {
 
   void tapped(BuildContext context) async {
     final selectedFontSize = await showDialog<double>(
+        //prevents the user from being able to click outside of the dialog box
+        barrierDismissible: false,
         context: context,
         builder: (BuildContext context) => ValuePickerDialog(
               initialValue: widget.weight.value,

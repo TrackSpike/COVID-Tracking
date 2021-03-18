@@ -1,11 +1,11 @@
 {
-    "instagram_like": 0.1,
-    "instagram_group_message": 0.01,
-    "instagram_direct_message": 1,
-    "snapchat_got_image": 0.05,
-    "snapchat_got_video": 0.08,
-    "snapchat_got_other": 0.05,
-    "snapchat_sent_image": 0.05,
-    "snapchat_sent_video": 0.08,
-    "snapchat_sent_other": 0.05
+    "instagram_like": 0.15,
+    "instagram_group_message": 0.50,
+    "instagram_direct_message": 0.80,
+    "snapchat_got_image": 0.35,
+    "snapchat_got_video": 0.40,
+    "snapchat_got_other": 0.55,
+    "snapchat_sent_image": 0.45,
+    "snapchat_sent_video": 0.55,
+    "snapchat_sent_other": 0.80
 }
