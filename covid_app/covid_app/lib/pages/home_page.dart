@@ -1,6 +1,7 @@
 import 'package:covid_app/pages/settings_page.dart';
 import 'package:covid_app/pages/upload_page.dart';
 import 'package:covid_app/pages/weights_page.dart';
+import 'package:covid_app/pages/locations_page.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:covid_app/pages/display_page.dart';
@@ -24,6 +25,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> _screens = [
     DisplayPage(),
     UploadPage(),
+    LocationsPage(),
     CovidCdcGuidelinesPage(),
     SettingsPage(),
   ];
@@ -97,16 +99,29 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
 
+          BottomNavigationBarItem(
+            icon: Icon(
+              MdiIcons.earth,
+              color: _selectedIndex == 2 ? Colors.blue : Colors.grey,
+            ),
+            title: Text(
+              "Locations",
+              style: TextStyle(
+                color: _selectedIndex == 2 ? Colors.blue : Colors.grey,
+              ),
+            ),
+          ),
+
           //CDCGuidelinesPage
           BottomNavigationBarItem(
               icon: Icon(
                 MdiIcons.accountQuestion,
-                color: _selectedIndex == 2 ? Colors.blue : Colors.grey,
+                color: _selectedIndex == 3 ? Colors.blue : Colors.grey,
               ),
               title: Text(
                 "CDC Guidelines",
                 style: TextStyle(
-                  color: _selectedIndex == 2 ? Colors.blue : Colors.grey,
+                  color: _selectedIndex == 3 ? Colors.blue : Colors.grey,
                 ),
               )),
 
@@ -114,12 +129,12 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.settings,
-                color: _selectedIndex == 3 ? Colors.blue : Colors.grey,
+                color: _selectedIndex == 4 ? Colors.blue : Colors.grey,
               ),
               title: Text(
                 "Settings",
                 style: TextStyle(
-                  color: _selectedIndex == 3 ? Colors.blue : Colors.grey,
+                  color: _selectedIndex == 4 ? Colors.blue : Colors.grey,
                 ),
               ))
         ],
