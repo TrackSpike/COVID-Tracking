@@ -1,12 +1,8 @@
 import 'package:covid_app/pages/settings_page.dart';
-import 'package:covid_app/pages/upload_page.dart';
-import 'package:covid_app/pages/weights_page.dart';
 import 'package:covid_app/pages/locations_page.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:covid_app/pages/display_page.dart';
-import 'package:covid_app/pages/help_page.dart';
-
 import 'covid_cdc_guidelines.dart';
 
 class HomePage extends StatefulWidget {
@@ -24,7 +20,6 @@ class _HomePageState extends State<HomePage> {
   // the different screens of the navigation bar
   List<Widget> _screens = [
     DisplayPage(),
-    UploadPage(),
     LocationsPage(),
     CovidCdcGuidelinesPage(),
     SettingsPage(),
@@ -81,20 +76,6 @@ class _HomePageState extends State<HomePage> {
               "Ego Network",
               style: TextStyle(
                 color: _selectedIndex == 0 ? Colors.blue : Colors.grey,
-              ),
-            ),
-          ),
-
-          // UPLOAD DATA PAGE
-          BottomNavigationBarItem(
-            icon: Icon(
-              MdiIcons.upload,
-              color: _selectedIndex == 1 ? Colors.blue : Colors.grey,
-            ),
-            title: Text(
-              "Upload Data",
-              style: TextStyle(
-                color: _selectedIndex == 1 ? Colors.blue : Colors.grey,
               ),
             ),
           ),

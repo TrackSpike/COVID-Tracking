@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:covid_app/algo_result.dart';
 import 'package:covid_app/pages/pyramid_page.dart';
+import 'package:covid_app/pages/upload_page.dart';
 import 'package:covid_app/result_chart.dart';
 import 'package:covid_app/universal_entry.dart';
 import 'package:flutter/material.dart';
@@ -50,6 +51,11 @@ class _DisplayPageState extends State<DisplayPage> {
               OutlineButton(
                 onPressed: calculateEgoNetwork,
                 child: Text((algoData == null) ? "Calculate" : "Re-Calculate"),
+              ),
+              OutlineButton(
+                child: Text("Upload Data"),
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => UploadPage())),
               ),
             ],
           ),
