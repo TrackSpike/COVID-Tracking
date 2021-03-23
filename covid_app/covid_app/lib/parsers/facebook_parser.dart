@@ -22,15 +22,15 @@ class FacebookParser extends Parser {
     Map<String, dynamic> jsonResult = json.decode(raw);
     for (Map<String, dynamic> like in jsonResult["reactions"]) {
       int timestamp = like["timestamp"];
-      String formatted_likee = formatLikee(like["title"]);
-      if(formatted_likee!="ERROR") {
-        result.add(UniversalEntry("facebook", formatted_likee, DateTime.fromMillisecondsSinceEpoch(timestamp*1000), "facebook_like"));
+      String formatted_likes = formatLikes(like["title"]);
+      if(formatted_likes!="ERROR") {
+        result.add(UniversalEntry("facebook", formatted_likes, DateTime.fromMillisecondsSinceEpoch(timestamp*1000), "facebook_like"));
       }
     }
     return result;
   }
 
-  String formatLikee(String title) {
+  String formatLikes(String title) {
     String formatted_string = "";
     try {
       if(title.indexOf("likes")>-1) {
