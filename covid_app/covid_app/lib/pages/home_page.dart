@@ -83,12 +83,12 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(
               MdiIcons.earth,
-              color: _selectedIndex == 2 ? Colors.blue : Colors.grey,
+              color: _selectedIndex == 1 ? Colors.blue : Colors.grey,
             ),
             title: Text(
               "Locations",
               style: TextStyle(
-                color: _selectedIndex == 2 ? Colors.blue : Colors.grey,
+                color: _selectedIndex == 1 ? Colors.blue : Colors.grey,
               ),
             ),
           ),
@@ -97,12 +97,12 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
               icon: Icon(
                 MdiIcons.accountQuestion,
-                color: _selectedIndex == 3 ? Colors.blue : Colors.grey,
+                color: _selectedIndex == 2 ? Colors.blue : Colors.grey,
               ),
               title: Text(
                 "CDC Guidelines",
                 style: TextStyle(
-                  color: _selectedIndex == 3 ? Colors.blue : Colors.grey,
+                  color: _selectedIndex == 2 ? Colors.blue : Colors.grey,
                 ),
               )),
 
@@ -110,12 +110,12 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.settings,
-                color: _selectedIndex == 4 ? Colors.blue : Colors.grey,
+                color: _selectedIndex == 3 ? Colors.blue : Colors.grey,
               ),
               title: Text(
                 "Settings",
                 style: TextStyle(
-                  color: _selectedIndex == 4 ? Colors.blue : Colors.grey,
+                  color: _selectedIndex == 3 ? Colors.blue : Colors.grey,
                 ),
               ))
         ],
