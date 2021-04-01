@@ -48,11 +48,13 @@ class _DisplayPageState extends State<DisplayPage> {
                 future: getLastResult(),
                 builder: resultBuilder,
               ),
-              OutlineButton(
+              RaisedButton(
+                color: Colors.blue,
                 onPressed: calculateEgoNetwork,
                 child: Text((algoData == null) ? "Calculate" : "Re-Calculate"),
               ),
-              OutlineButton(
+              RaisedButton(
+                color: Colors.blue,
                 child: Text("Upload Data"),
                 onPressed: () => Navigator.push(context,
                     MaterialPageRoute(builder: (context) => UploadPage())),
