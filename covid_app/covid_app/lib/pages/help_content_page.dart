@@ -15,15 +15,19 @@ class HelpContentPage extends StatelessWidget {
         ),
         body: Center(
             child: Container(
-                padding: EdgeInsets.only(left: 20, right: 20),
+                padding: EdgeInsets.only(left: 15, top: 15, right: 15),
                 child: FutureBuilder(
                   future: getContent(helpIndex),
-                  builder:
-                      (BuildContext context, AsyncSnapshot<String> snapshot) {
-                    return (snapshot.hasData)
+                  builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+                        return (snapshot.hasData)
                         ? Markdown(
                             data: snapshot.data,
                             physics: ClampingScrollPhysics(),
+                            styleSheet: MarkdownStyleSheet(
+                              h1: TextStyle(fontSize: 16),
+                              h2: TextStyle(fontSize: 16, fontWeight: FontWeight.normal),
+                              h3: TextStyle(fontSize: 16)
+                            ),
                           )
                         : Text("Loading...");
                   },
