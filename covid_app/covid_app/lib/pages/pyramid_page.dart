@@ -61,7 +61,7 @@ class PyramidPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             new Container(
-              margin: const EdgeInsets.only(bottom: 20),
+              margin: const EdgeInsets.fromLTRB(0, 5, 0, 5),
               width: 200,
               child: Text("Click on a level in your pyramid to see more",
                   textAlign: TextAlign.center,

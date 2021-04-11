@@ -16,10 +16,6 @@ class _CovidCdcGuidelinesPageState extends State<CovidCdcGuidelinesPage> {
       appBar: AppBar(
         title: Text('CDC Guidelines'),
       ),
-      //body: Center(
-        //child: Column(
-        /*
-             */
       body:ListView(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
