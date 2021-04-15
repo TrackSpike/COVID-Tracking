@@ -22,19 +22,8 @@ class _CovidCdcGuidelinesPageState extends State<CovidCdcGuidelinesPage> {
               padding: const EdgeInsets.all(8),
               children: <Widget>[
                 Container(
-                  height: 50,
                   color: Colors.amber[600],
-                  child: const Center(child: Text('"Wash and Sanitize your hands after touching surfaces. Wash Hands with handwash and sanitize hands with at least 60% alcohol based sanitizer"')),
-                ),
-                Container(
-                  height: 50,
-                  color: Colors.amber[500],
-                  child: const Center(child: Text(':Avoid touching your eyes, nose, and mouth with unwashed hands')),
-                ),
-                Container(
-                  height: 50,
-                  color: Colors.amber[500],
-                  child: const Center(child: Text(':Wash your hands for at least 20 seconds with soap and water or santizer. Wash hands before eating and before/after using bathroom')),
+                  child: const Center(child: Text("Wash and Sanitize your hands after touching surfaces. Wash Hands with handwash and sanitize hands with at least 60% alcohol based sanitizer\n:Avoid touching your eyes, nose, and mouth with unwashed hands\n :Wash your hands for at least 20 seconds with soap and water or santizer. Wash hands before eating and before/after using bathroom"))
                 ),
                 Container(
                   height: 250,
@@ -67,9 +56,8 @@ class _CovidCdcGuidelinesPageState extends State<CovidCdcGuidelinesPage> {
                   ),
                 ),
                 Container(
-                  height: 50,
                   color: Colors.amber[500],
-                  child: const Center(child: Text('Cover Coughs and Sneezes')),
+                  child: const Center(child: Text('Cover Coughs and Sneezes\n Always cover your mouth and nose with a tissue when you cough or sneeze or use the inside of your elbow and do not spit. \n Clean and Disinfect frequently touched surfaces with Chlorox. Frequently touched surfaces include Doorknobs, tables and switches ')),
                 ),
                 Container(
                   height: 250,
@@ -101,40 +89,15 @@ class _CovidCdcGuidelinesPageState extends State<CovidCdcGuidelinesPage> {
                       )
                   ),
                 ),
+
                 Container(
-                  height: 50,
                   color: Colors.amber[500],
-                  child: const Center(child: Text('Always cover your mouth and nose with a tissue when you cough or sneeze or use the inside of your elbow and do not spit.')),
+                  child: const Center(child: Text('Monitor your health daily for symptoms such as headache, fever,cough, loss of smell and taste \n Do not travel unless absolutely needed \n Avoid gatherings in big groups outside your household ')),
                 ),
+
                 Container(
-                  height: 50,
                   color: Colors.amber[500],
-                  child: const Center(child: Text('Clean and Disinfect frequently touched surfaces with Chlorox. Frequently touched surfaces include Doorknobs, tables and switches')),
-                ),
-                Container(
-                  height: 50,
-                  color: Colors.amber[500],
-                  child: const Center(child: Text('Monitor your health daily for symptoms such as headache, fever,cough, loss of smell and taste')),
-                ),
-                Container(
-                  height: 50,
-                  color: Colors.amber[500],
-                  child: const Center(child: Text('Do not travel unless absolutely needed')),
-                ),
-                Container(
-                  height: 50,
-                  color: Colors.amber[500],
-                  child: const Center(child: Text('Avoid gatherings in big groups outside your household')),
-                ),
-                Container(
-                  height: 50,
-                  color: Colors.amber[500],
-                  child: const Center(child: Text('Avoid crowds and poorly ventilated spaces')),
-                ),
-                Container(
-                  height: 50,
-                  color: Colors.amber[500],
-                  child: const Center(child: Text('Stay six feet away from others outside your household ')),
+                  child: const Center(child: Text('Avoid crowds and poorly ventilated spaces \n Stay six feet away from others outside your household ')),
                 ),
                 Container(
                   height: 250,
@@ -169,48 +132,17 @@ class _CovidCdcGuidelinesPageState extends State<CovidCdcGuidelinesPage> {
                 Container(
                   height: 50,
                   color: Colors.amber[500],
-                  child: const Center(child: Text('Get vaccinated immediately when eligible, but continue taking daily precautions till our recommendations change')),
+                  child: const Center(child: Text('Get vaccinated immediately when eligible, but continue taking daily precautions till our recommendations change \n Wear a mask in addition to staying six feet apart \n Everyone 2 years and older should wear masks in public. ')),
                 ),
                 Container(
-                  height: 50,
                   color: Colors.amber[500],
-                  child: const Center(child: Text('Wear a mask in addition to staying six feet apart')),
-                ),
-                Container(
-                  height: 50,
-                  color: Colors.amber[500],
-                  child: const Center(child: Text('Everyone 2 years and older should wear masks in public.')),
-                ),
-                Container(
-                  height: 50,
-                  color: Colors.amber[500],
-                  child: const Center(child: Text('If someone in your household is infected, people in the household should take precautions by wearing masks')),
-                ),
-                Container(
-                  height: 50,
-                  color: Colors.amber[500],
-                  child: const Center(child: Text('Wash your hands or use sanitizer before putting mask')),
-                ),
-                Container(
-                  height: 50,
-                  color: Colors.amber[500],
-                  child: const Center(child: Text('Wear your mask over your nose and mouth and secure it under your chin.')),
+                  child: const Center(child: Text('If someone in your household is infected, people in the household should take precautions by wearing masks \n Wash your hands or use sanitizer before putting mask \n Wear your mask over your nose and mouth and secure it under your chin.')),
                 ),
         Container(
           height: 50,
           color: Colors.amber[500],
-          child: const Center(child: Text('Fit the mask snugly against the sides of your face, slipping the loops over your ears or tying the strings behind your head.')),
+          child: const Center(child: Text('Fit the mask snugly against the sides of your face, slipping the loops over your ears or tying the strings behind your head. \n If you have to continually adjust your mask, it doesn’t fit properly, and you might need to find a different mask type or brand.\n  Make sure you can breathe easily. Double masking is recommended in crowded places. Double masking with one cloth mask/one surgical mask is appropiate or one surgical mask/one N95 mask is appropiate ')),
         ),
-                Container(
-                  height: 50,
-                  color: Colors.amber[500],
-                  child: const Center(child: Text('If you have to continually adjust your mask, it doesn’t fit properly, and you might need to find a different mask type or brand.')),
-                ),
-                Container(
-                  height: 50,
-                  color: Colors.amber[500],
-                  child: const Center(child: Text('Make sure you can breathe easily. Double masking is recommended in crowded places. Double masking with one cloth mask/one surgical mask is appropiate or one surgical mask/one N95 mask is appropiate')),
-                ),
                 Container(
                   height: 250,
                   color: Colors.amber[500],
