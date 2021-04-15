@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:covid_app/algo_result.dart';
 import 'package:covid_app/pages/pyramid_page.dart';
 import 'package:covid_app/pages/upload_page.dart';
+import 'package:covid_app/pages/share_results.dart';
 import 'package:covid_app/result_chart.dart';
 import 'package:covid_app/universal_entry.dart';
 import 'package:flutter/material.dart';
@@ -48,17 +49,27 @@ class _DisplayPageState extends State<DisplayPage> {
                 future: getLastResult(),
                 builder: resultBuilder,
               ),
-              RaisedButton(
-                color: Colors.blue,
-                onPressed: calculateEgoNetwork,
-                child: Text((algoData == null) ? "Calculate" : "Re-Calculate"),
-              ),
-              RaisedButton(
-                color: Colors.blue,
-                child: Text("Upload Data"),
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => UploadPage())),
-              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  RaisedButton(
+                    color: Colors.blue,
+                    onPressed: calculateEgoNetwork,
+                    child:
+                        Text((algoData == null) ? "Calculate" : "Re-Calculate"),
+                  ),
+                  RaisedButton(
+                    color: Colors.blue,
+                    child: Text("Upload Data"),
+                    onPressed: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => UploadPage())),
+                  ),
+                  RaisedButton(
+                      color: Colors.blue,
+                      child: Text("Share Results"),
+                      onPressed: () => {}),
+                ],
+              )
             ],
           ),
         ),
