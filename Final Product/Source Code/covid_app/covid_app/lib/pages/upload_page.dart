@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:covid_app/parsers/instagram_parser.dart';
 import 'package:covid_app/globals.dart' as globals;
-import 'package:shared_preferences/shared_preferences.dart';
 
 class UploadPage extends StatefulWidget {
   UploadPage({Key key}) : super(key: key);
@@ -25,9 +24,6 @@ class _UploadPageState extends State<UploadPage> {
     String dataSource = (globals.uploadedFileName != null)
         ? globals.uploadedFileName
         : "No data source";
-    String uploadButton = (globals.uploadedFileName != null)
-        ? "Overwrite Social Data"
-        : "Load Social Data";
     return Scaffold(
       appBar: AppBar(
         title: Text("Upload Your Data"),
@@ -78,40 +74,59 @@ class _UploadPageState extends State<UploadPage> {
 
   void appendEntries(context, String pathResult, Parser parser) async {
     globals.uploadedFileName = pathResult;
-    List<UniversalEntry> newEntries = await parser.format(pathResult);
-    Directory directory = await getApplicationDocumentsDirectory();
-    File dataFile = File("${directory.path}/lastUploadedData.json");
-    if (!await dataFile.exists()) {
-      dataFile = await dataFile.create();
-      List<Map<String, dynamic>> empty = [];
-      dataFile.writeAsString(json.encode(empty));
+    try {
+      List<UniversalEntry> newEntries = await parser.format(pathResult);
+      Directory directory = await getApplicationDocumentsDirectory();
+      File dataFile = File("${directory.path}/lastUploadedData.json");
+      if (!await dataFile.exists()) {
+        dataFile = await dataFile.create();
+        List<Map<String, dynamic>> empty = [];
+        dataFile.writeAsString(json.encode(empty));
+      }
+      List<UniversalEntry> entries =
+          (json.decode(await dataFile.readAsString()) as List<dynamic>)
+              .map((e) => UniversalEntry.fromJson(e))
+              .toList();
+      entries.addAll(newEntries);
+      //Big performance bottleneck
+      //--------------------------------------------------------------------------
+      List<Map<String, dynamic>> entriesJson =
+          entries.map((e) => e.toJson()).toList();
+      await dataFile.writeAsString(json.encode(entriesJson));
+      //--------------------------------------------------------------------------
+      showDialog(
+          context: context,
+          builder: (_) => AlertDialog(
+                title: Text("Success!"),
+                content: Text("The ${parser.name} was added successfully."),
+                actions: <Widget>[
+                  RaisedButton(
+                    child: Text("Nice!"),
+                    onPressed: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, '/', (_) => false);
+                    },
+                  ),
+                ],
+              ));
+    } catch (e) {
+      showDialog(
+          context: context,
+          builder: (_) => AlertDialog(
+                title: Text("Error"),
+                content: Text(
+                    "Refer to the help page in the settings to see more info. \n ${e.toString()}"),
+                actions: <Widget>[
+                  RaisedButton(
+                    child: Text("Nice!"),
+                    onPressed: () {
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, '/', (_) => false);
+                    },
+                  ),
+                ],
+              ));
     }
-    List<UniversalEntry> entries =
-        (json.decode(await dataFile.readAsString()) as List<dynamic>)
-            .map((e) => UniversalEntry.fromJson(e))
-            .toList();
-    entries.addAll(newEntries);
-    //Big performance bottleneck
-    //--------------------------------------------------------------------------
-    List<Map<String, dynamic>> entriesJson =
-        entries.map((e) => e.toJson()).toList();
-    await dataFile.writeAsString(json.encode(entriesJson));
-    //--------------------------------------------------------------------------
-    showDialog(
-        context: context,
-        builder: (_) => AlertDialog(
-              title: Text("Success!"),
-              content: Text("The ${parser.name} was added successfully."),
-              actions: <Widget>[
-                RaisedButton(
-                  child: Text("Nice!"),
-                  onPressed: () {
-                    Navigator.pushNamedAndRemoveUntil(
-                        context, '/', (_) => false);
-                  },
-                ),
-              ],
-            ));
   }
 }
 

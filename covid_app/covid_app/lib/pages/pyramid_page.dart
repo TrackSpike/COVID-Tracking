@@ -46,14 +46,15 @@ class PyramidPage extends StatelessWidget {
       numbers[score.level] += 1;
     }
 
-    String levelZeroFirstName =
-        res.where((e) => e.level == 0).first.getDisplayName();
-    String levelOneFirstName =
-        res.where((e) => e.level == 1).first.getDisplayName();
-    String levelTwoFirstName =
-        res.where((e) => e.level == 2).first.getDisplayName();
-    String levelThreeFirstName =
-        res.where((e) => e.level == 3).first.getDisplayName();
+    var levelFirstNames = List(4);
+    for (int i = 0; i < 4; i++) {
+      try {
+        levelFirstNames[i] =
+            res.firstWhere((e) => e.level == i).getDisplayName();
+      } catch (e) {
+        levelFirstNames[i] = "";
+      }
+    }
 
     return Expanded(
       child: Center(
@@ -68,13 +69,13 @@ class PyramidPage extends StatelessWidget {
                   style: TextStyle(
                       fontFamily: "Roboto", fontWeight: FontWeight.bold)),
             ),
-            PyramidLayer(0, layerNames[0], levelZeroFirstName, numbers[0], 200,
+            PyramidLayer(0, layerNames[0], levelFirstNames[0], numbers[0], 200,
                 layerColors[0], pyramidClick),
-            PyramidLayer(1, layerNames[1], levelOneFirstName, numbers[1], 250,
+            PyramidLayer(1, layerNames[1], levelFirstNames[1], numbers[1], 250,
                 layerColors[1], pyramidClick),
-            PyramidLayer(2, layerNames[2], levelTwoFirstName, numbers[2], 300,
+            PyramidLayer(2, layerNames[2], levelFirstNames[2], numbers[2], 300,
                 layerColors[2], pyramidClick),
-            PyramidLayer(3, layerNames[3], levelThreeFirstName, numbers[3], 350,
+            PyramidLayer(3, layerNames[3], levelFirstNames[3], numbers[3], 350,
                 layerColors[3], pyramidClick),
           ],
         ),
