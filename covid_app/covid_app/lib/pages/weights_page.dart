@@ -16,6 +16,7 @@ class WeightsPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             RaisedButton(
+                //color: Colors.blue,
                 child: Text("Reset Defaults"),
                 onPressed: () {
                   resetWeights();
