@@ -36,6 +36,7 @@ class _LocationsPageState extends State<LocationsPage> {
                   style: TextStyle(fontSize: 15))),
               // Button that, when pressed, prompts the user to pick a file folder
               RaisedButton(
+                color: Colors.blue,
                 onPressed: () {
                   openFilePicker(context, FacebookLocationParser());
                 },
