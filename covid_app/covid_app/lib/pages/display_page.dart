@@ -5,10 +5,16 @@ import 'package:covid_app/pages/pyramid_page.dart';
 import 'package:covid_app/pages/upload_page.dart';
 import 'package:covid_app/pages/share_results.dart';
 import 'package:covid_app/result_chart.dart';
+import 'package:covid_app/shared_prefs.dart';
 import 'package:covid_app/universal_entry.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_app/algo.dart';
+//import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:screenshot/screenshot.dart';
+import 'package:esys_flutter_share/esys_flutter_share.dart';
+import 'package:screenshot_and_share/generated/i18n.dart';
+import 'package:screenshot_and_share/screenshot_share.dart';
 
 class DisplayPage extends StatefulWidget {
   DisplayPage({Key key}) : super(key: key);
@@ -19,6 +25,7 @@ class DisplayPage extends StatefulWidget {
 
 class _DisplayPageState extends State<DisplayPage> {
   List<AlgoResult> algoData;
+  DateTime customDateTime;
 
   @override
   void initState() {
@@ -32,6 +39,8 @@ class _DisplayPageState extends State<DisplayPage> {
       algoData = r;
     });
   }
+
+  ScreenshotController screenshotController = ScreenshotController();
 
   @override
   Widget build(BuildContext context) {
@@ -67,9 +76,14 @@ class _DisplayPageState extends State<DisplayPage> {
                   RaisedButton(
                       color: Colors.blue,
                       child: Text("Share Results"),
-                      onPressed: () => {}),
+                      onPressed: () => ScreenshotShare.takeScreenshotAndShare()),
                 ],
-              )
+              ),
+              /* if (sharedPrefs.useDatePicker)
+                RaisedButton(
+                  child: Text("Pick Date"),
+                  onPressed: pickDateTime,
+                ), */
             ],
           ),
         ),
@@ -90,6 +104,17 @@ class _DisplayPageState extends State<DisplayPage> {
     return Text("Error");
   }
 
+  /* void pickDateTime() {
+    DatePicker.showDatePicker(context,
+        showTitleActions: true,
+        minTime: DateTime(2000, 3, 5),
+        maxTime: DateTime.now(), onConfirm: (date) {
+      setState(() {
+        customDateTime = date;
+      });
+    }, currentTime: DateTime.now(), locale: LocaleType.en);
+  } */
+
   void calculateEgoNetwork() async {
     try {
       Directory directory = await getApplicationDocumentsDirectory();
@@ -98,7 +123,7 @@ class _DisplayPageState extends State<DisplayPage> {
       List<UniversalEntry> entries = (json.decode(text) as List<dynamic>)
           .map((e) => UniversalEntry.fromJson(e))
           .toList();
-      List<AlgoResult> result = await calculate(entries);
+      List<AlgoResult> result = await calculate(entries, customDateTime);
       setState(() {
         algoData = result;
       });

@@ -14,7 +14,7 @@ List<int> kMeansCluster(int k, List<double> input, {int x = 100}) {
       minScore = score;
       minScoreIndex = i;
     }
-    print(score);
+    // print(score);
   }
   return orderClusters(results[minScoreIndex]);
 }

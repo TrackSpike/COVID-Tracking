@@ -24,6 +24,9 @@ class SharedPrefs {
   String get excludedName => _sharedPrefs.getString("excludedName") ?? "";
   set excludedName(String value) =>
       _sharedPrefs.setString("excludedName", value);
+
+  bool get useDatePicker => _sharedPrefs.getBool("useDatePicker") ?? false;
+  set useDatePicker(bool value) => _sharedPrefs.setBool("useDatePicker", value);
 }
 
 final SharedPrefs sharedPrefs = SharedPrefs();
