@@ -9,12 +9,9 @@ import 'package:covid_app/shared_prefs.dart';
 import 'package:covid_app/universal_entry.dart';
 import 'package:flutter/material.dart';
 import 'package:covid_app/algo.dart';
-//import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:screenshot_share/screenshot_share.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:screenshot/screenshot.dart';
-import 'package:esys_flutter_share/esys_flutter_share.dart';
-import 'package:screenshot_and_share/generated/i18n.dart';
-import 'package:screenshot_and_share/screenshot_share.dart';
 
 class DisplayPage extends StatefulWidget {
   DisplayPage({Key key}) : super(key: key);
@@ -39,8 +36,6 @@ class _DisplayPageState extends State<DisplayPage> {
       algoData = r;
     });
   }
-
-  ScreenshotController screenshotController = ScreenshotController();
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +71,8 @@ class _DisplayPageState extends State<DisplayPage> {
                   RaisedButton(
                       color: Colors.blue,
                       child: Text("Share Results"),
-                      onPressed: () => ScreenshotShare.takeScreenshotAndShare()),
+                      onPressed: () =>
+                          {ScreenshotShare.takeScreenshotAndShare()}),
                 ],
               ),
               /* if (sharedPrefs.useDatePicker)
@@ -99,14 +95,12 @@ class _DisplayPageState extends State<DisplayPage> {
       if (snapshot.data != null)
         return ResultsDisplay(snapshot.data);
       else
-        return Text(
-            "Tap 'Calculate' to create your Ego Network!\n"
-        ); //Text
+        return Text("Tap 'Calculate' to create your Ego Network!\n"); //Text
     }
     return Text("Error");
   }
 
-  /* void pickDateTime() {
+  void pickDateTime() {
     DatePicker.showDatePicker(context,
         showTitleActions: true,
         minTime: DateTime(2000, 3, 5),
@@ -115,7 +109,7 @@ class _DisplayPageState extends State<DisplayPage> {
         customDateTime = date;
       });
     }, currentTime: DateTime.now(), locale: LocaleType.en);
-  } */
+  }
 
   void calculateEgoNetwork() async {
     try {
