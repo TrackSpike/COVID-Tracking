@@ -1,9 +1,11 @@
 import 'package:covid_app/pages/home_page.dart';
 import 'package:covid_app/shared_prefs.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences.setMockInitialValues({});
   await sharedPrefs.init();
   runApp(MyApp());
 }
