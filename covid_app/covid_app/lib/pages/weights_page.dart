@@ -131,6 +131,7 @@ class _PersonDisplayWidgetState extends State<PersonDisplayWidget> {
         barrierDismissible: false,
         context: context,
         builder: (BuildContext context) => ValuePickerDialog(
+              weightName: widget.weight.key,
               initialValue: widget.weight.value,
             ));
     setState(() {
@@ -148,9 +149,10 @@ class _PersonDisplayWidgetState extends State<PersonDisplayWidget> {
 
 class ValuePickerDialog extends StatefulWidget {
   /// initial selection for the slider
+  final String weightName;
   final double initialValue;
 
-  const ValuePickerDialog({Key key, this.initialValue}) : super(key: key);
+  const ValuePickerDialog({Key key, this.weightName, this.initialValue}) : super(key: key);
 
   @override
   _ValuePickerDialogState createState() => _ValuePickerDialogState();
@@ -158,11 +160,13 @@ class ValuePickerDialog extends StatefulWidget {
 
 class _ValuePickerDialogState extends State<ValuePickerDialog> {
   /// current selection of the slider
+  String _name;
   double _value;
 
   @override
   void initState() {
     super.initState();
+    _name = widget.weightName;
     _value = widget.initialValue;
   }
 
@@ -170,7 +174,7 @@ class _ValuePickerDialogState extends State<ValuePickerDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Text(
-        "Edit Weight Value",
+        "Edit Weight Value for " + _name.toString(),
         textAlign: TextAlign.center,
       ),
       content: Container(
