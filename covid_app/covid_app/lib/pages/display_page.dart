@@ -49,7 +49,7 @@ class _DisplayPageState extends State<DisplayPage> {
         title: Text("Your Ego Network"),
       ),
       body: Container(
-        padding: EdgeInsets.fromLTRB(0, 0, 25, 50),
+        padding: EdgeInsets.fromLTRB(0, 25, 0, 50),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -99,7 +99,9 @@ class _DisplayPageState extends State<DisplayPage> {
       if (snapshot.data != null)
         return ResultsDisplay(snapshot.data);
       else
-        return Text("Hit Calculate to see results.");
+        return Text(
+            "Tap 'Calculate' to create your Ego Network!\n"
+        ); //Text
     }
     return Text("Error");
   }

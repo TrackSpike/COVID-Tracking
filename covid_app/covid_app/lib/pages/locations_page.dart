@@ -29,10 +29,10 @@ class _LocationsPageState extends State<LocationsPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Center(
-                child: Text("Work In Progress",
+                child: Text("Work In Progress\n",
                   style: TextStyle(fontSize: 15))),
               Center(
-                child: Text("Press a button to retrieve the corresponding location data",
+                child: Text("Press a button to retrieve the corresponding location data\n",
                   style: TextStyle(fontSize: 15))),
               // Button that, when pressed, prompts the user to pick a file folder
               RaisedButton(
