@@ -12,7 +12,12 @@ import 'package:covid_app/emotion_classifier/classifier.dart';
 final timeWeight = 0.01;
 final emotionWeight = 3;
 
-Future<List<AlgoResult>> calculate(List<UniversalEntry> data) async {
+Future<List<AlgoResult>> calculate(List<UniversalEntry> data,
+    [DateTime customDate, String saveExternal]) async {
+  if (customDate == null)
+    customDate = getLatestInteraction(data);
+  else
+    data = data.where((entry) => entry.time.isBefore(customDate)).toList();
   Classifier classifier;
   if (sharedPrefs.useEmotionNn) {
     classifier = Classifier();
@@ -22,10 +27,8 @@ Future<List<AlgoResult>> calculate(List<UniversalEntry> data) async {
   Map<String, double> results = {};
   data.forEach((entry) {
     DateTime time = entry.time;
-    double dif = getLatestInteraction(data)
-        .difference(time)
-        .inDays
-        .toDouble(); //todo int to double
+    double dif =
+        customDate.difference(time).inDays.toDouble(); //todo int to double
     double weight = weights[entry.type];
     double value =
         (weight - timeWeight * dif * weight).clamp(0.0, double.infinity);
@@ -45,7 +48,10 @@ Future<List<AlgoResult>> calculate(List<UniversalEntry> data) async {
   results.forEach((key, value) => resultTyped.add(AlgoResult(key, value, 0)));
   resultTyped.sort((a, b) => b.score.compareTo(a.score));
   _calculateLevels(resultTyped);
-  _writeFile(resultTyped);
+  if (saveExternal.isEmpty)
+    _writeFile(resultTyped);
+  else
+    _writeFile(resultTyped, saveExternal);
   return resultTyped;
 }
 
@@ -76,10 +82,11 @@ void _calculateLevels(List<AlgoResult> results) {
   }
 }
 
-void _writeFile(List<AlgoResult> results) async {
+void _writeFile(List<AlgoResult> results,
+    [String fileName = "lastCalculatedAlgo"]) async {
   List<Map<String, dynamic>> jsonF = results.map((r) => r.toMap()).toList();
   Directory directory = await getApplicationDocumentsDirectory();
-  File fileNew = File("${directory.path}/lastCalculatedAlgo.json");
+  File fileNew = await File("${directory.path}/$fileName.json").create();
   await fileNew.writeAsString(jsonEncode(jsonF));
 }
 
