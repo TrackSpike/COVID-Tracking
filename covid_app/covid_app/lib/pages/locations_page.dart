@@ -8,6 +8,8 @@ import 'package:covid_app/parsers/location_parsers/location_parser.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 
+List<LocationEntry> locationData;
+
 class LocationsPage extends StatefulWidget {
   LocationsPage({Key key}) : super(key: key);
 
@@ -29,11 +31,12 @@ class _LocationsPageState extends State<LocationsPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Center(
-                child: Text("Work In Progress\n",
-                  style: TextStyle(fontSize: 15))),
+                  child: Text("Work In Progress\n",
+                      style: TextStyle(fontSize: 15))),
               Center(
-                child: Text("Press a button to retrieve the corresponding location data\n",
-                  style: TextStyle(fontSize: 15))),
+                  child: Text(
+                      "Press a button to retrieve the corresponding location data\n",
+                      style: TextStyle(fontSize: 15))),
               // Button that, when pressed, prompts the user to pick a file folder
               RaisedButton(
                 color: Colors.blue,
@@ -41,6 +44,17 @@ class _LocationsPageState extends State<LocationsPage> {
                   openFilePicker(context, FacebookLocationParser());
                 },
                 child: Text("Facebook"),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  padding: const EdgeInsets.all(8),
+                  itemCount: locationData != null ? locationData.length : 0,
+                  itemBuilder: (BuildContext context, int index) => Container(
+                    width: double.maxFinite,
+                    height: 75,
+                    child: Text("LOCATION DATA GOES HERE"),
+                  ),
+                ),
               ),
             ],
           ),
@@ -72,23 +86,28 @@ class _LocationsPageState extends State<LocationsPage> {
 
     // Grabs existing entries from the JSON and adds them to the list
     List<LocationEntry> entries =
-    (json.decode(await dataFile.readAsString()) as List<dynamic>)
-        .map((e) => LocationEntry.fromJson(e))
-        .toList();
+        (json.decode(await dataFile.readAsString()) as List<dynamic>)
+            .map((e) => LocationEntry.fromJson(e))
+            .toList();
 
     // Adds the new entries to the list
     entries.addAll(newEntries);
 
+    //Clone
+    locationData = [];
+    entries.forEach((element) {
+      locationData.add(element);
+    });
+
     //Big performance bottleneck
     //--------------------------------------------------------------------------
     List<Map<String, dynamic>> entriesJson =
-    entries.map((e) => e.toJson()).toList();
+        entries.map((e) => e.toJson()).toList();
     await dataFile.writeAsString(json.encode(entriesJson));
     //--------------------------------------------------------------------------
     showDialog(
         context: context,
-        builder: (_) =>
-            AlertDialog(
+        builder: (_) => AlertDialog(
               title: Text("Success!"),
               content: Text("${parser.name} was retrieved successfully."),
               actions: <Widget>[
