@@ -1,4 +1,4 @@
-import 'package:covid_app/parsers/location_parsers/location_parser.dart';
+/* import 'package:covid_app/parsers/location_parsers/location_parser.dart';
 import 'dart:io';
 import 'dart:convert';
 import 'package:covid_app/location_entry.dart';
@@ -34,4 +34,4 @@ class InstagramLocationParser extends LocationParser {
 
     return result;
   }
-}
+} */
