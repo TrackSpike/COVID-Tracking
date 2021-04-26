@@ -68,19 +68,18 @@ class _DisplayPageState extends State<DisplayPage> {
                     onPressed: () => Navigator.push(context,
                         MaterialPageRoute(builder: (context) => UploadPage())),
                   ),
-
                   RaisedButton(
                       color: Colors.blue,
                       child: Text("Share Results"),
                       onPressed: () =>
-                          {ScreenshotShare.takeScreenshotAndShare()}
-                  ),
-                ],),
-              /* if (sharedPrefs.useDatePicker)
+                          {ScreenshotShare.takeScreenshotAndShare()}),
+                ],
+              ),
+              if (sharedPrefs.useDatePicker)
                 RaisedButton(
                   child: Text("Pick Date"),
                   onPressed: pickDateTime,
-                ), */
+                ),
             ],
           ),
         ),
@@ -100,7 +99,6 @@ class _DisplayPageState extends State<DisplayPage> {
     }
     return Text("Error");
   }
-
 
   void pickDateTime() {
     DatePicker.showDatePicker(context,

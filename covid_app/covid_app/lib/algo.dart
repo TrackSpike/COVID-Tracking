@@ -48,7 +48,7 @@ Future<List<AlgoResult>> calculate(List<UniversalEntry> data,
   results.forEach((key, value) => resultTyped.add(AlgoResult(key, value, 0)));
   resultTyped.sort((a, b) => b.score.compareTo(a.score));
   _calculateLevels(resultTyped);
-  if (saveExternal.isEmpty)
+  if (saveExternal == null || saveExternal.isEmpty)
     _writeFile(resultTyped);
   else
     _writeFile(resultTyped, saveExternal);
