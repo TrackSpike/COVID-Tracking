@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'dart:io';
+import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:covid_app/location_entry.dart';
 import 'package:covid_app/parsers/location_parsers/facebook_location_parser.dart';
@@ -52,7 +53,7 @@ class _LocationsPageState extends State<LocationsPage> {
                   itemBuilder: (BuildContext context, int index) => Container(
                     width: double.maxFinite,
                     height: 75,
-                    child: Text("LOCATION DATA GOES HERE"),
+                    child: Text("${locationData[index].city}, ${locationData[index].region} ${locationData[index].country}\nLast known visit: ${formatDate(locationData[index].time)}"),
                   ),
                 ),
               ),
@@ -96,7 +97,9 @@ class _LocationsPageState extends State<LocationsPage> {
     //Clone
     locationData = [];
     entries.forEach((element) {
-      locationData.add(element);
+      if (!isInEntries(element)) {
+        locationData.add(element);
+      }
     });
 
     //Big performance bottleneck
@@ -121,5 +124,19 @@ class _LocationsPageState extends State<LocationsPage> {
                 ),
               ],
             ));
+  }
+
+  // Checks for location entries that contain the same location as
+  // an already-included entry. This will help to only keep the latest
+  // entry from a given location.
+  bool isInEntries(LocationEntry entry) {
+    return (locationData.singleWhere((it) => (it.city == entry.city && it.country == entry.country && it.region == entry.region),
+        orElse: () => null) != null);
+  }
+
+  // Formats a DateTime object for display in the app.
+  String formatDate(DateTime datetime) {
+    DateFormat formatter = DateFormat('yyyy-MM-dd HH:mm:ss');
+    return formatter.format(datetime);
   }
 }

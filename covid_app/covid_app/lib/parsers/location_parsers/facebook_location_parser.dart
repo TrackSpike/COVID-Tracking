@@ -23,8 +23,9 @@ class FacebookLocationParser extends LocationParser {
       DateTime time = DateTime.fromMillisecondsSinceEpoch(1000*instance["timestamp"]);
       DateTime twoWeeksAgo = DateTime.now().subtract(const Duration(days: 14));
 
-      if (time.isAfter(twoWeeksAgo)) break;
+      if (time.isBefore(twoWeeksAgo)) break;
 
+      print(time);
       result.add(LocationEntry("facebook", instance["city"], instance["region"], instance["country"], time));
     }
 
