@@ -77,6 +77,7 @@ class _DisplayPageState extends State<DisplayPage> {
               ),
               if (sharedPrefs.useDatePicker)
                 RaisedButton(
+                  color: Colors.blue,
                   child: Text("Pick Date"),
                   onPressed: pickDateTime,
                 ),
